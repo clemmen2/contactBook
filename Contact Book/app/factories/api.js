@@ -43,8 +43,24 @@
                 return $q.reject(response.data);
             }
         }
-        function getContact() {
-
+        function getContact(contactId) {
+            req.method = 'GET';
+            req.url = req.url + contactId;
+            return $http(req).then(onSuccess, onFailure);
+            function onSuccess(response) {
+                if (response.status == 200) {
+                    $log.debug('API Status:' + response.status + ' Got the contact with id ' + contactId);
+                    $log.debug(response);
+                    return response.data;
+                } else {
+                    $log.error('API Status:' + response.status + ' Could not get the contact with id ' + contactId);
+                    return $q.reject(response.data);
+                }
+            }
+            function onFailure(response) {
+                $log.error('API Status:' + response.status + ' Could not access database');
+                return $q.reject(response.data);
+            }
         }
         function updateContact() {
 

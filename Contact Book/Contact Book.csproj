@@ -75,12 +75,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\controllers\contCtrl.js" />
+    <Content Include="templ\error.html" />
     <Content Include="app\cbApp.config.js" />
     <Content Include="app\cbApp.module.js" />
     <Content Include="app\cbApp.constants.js" />
     <Content Include="app\controllers\homeCtrl.js" />
     <Content Include="app\factories\api.js" />
     <Content Include="index.html" />
+    <Content Include="templ\contact.html" />
     <Content Include="templ\home.html" />
     <Content Include="Web.config" />
   </ItemGroup>

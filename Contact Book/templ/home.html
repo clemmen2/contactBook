@@ -2,5 +2,5 @@
     <div ng-repeat='error in vm.error'>{{error.message}}</div>
 </div>
 <ul class="list-group">
-    <li ng-repeat='contact in vm.contacts' class='list-group-item'><a href=''>{{contact.last_name}}, {{contact.first_name}}</a></li>
+    <li ng-repeat='contact in vm.contacts' class='list-group-item'><a href='#/contact/{{contact.id}}'>{{contact.last_name}}, {{contact.first_name}}</a></li>
 </ul>

@@ -10,7 +10,18 @@
                 controller: 'homeCtrl',
                 controllerAs: 'vm'
             })
+            .when('/contact/:contId', {
+                templateUrl: 'templ/contact.html',
+                controller: 'contCtrl',
+                controllerAs: 'vm'
+            })
+            .when('/404', {
+                templateUrl: 'templ/404.html'
+            })
             .when('/', {
+                redirectTo: '/home'
+            })
+            .when('/contact', {
                 redirectTo: '/home'
             });
         $logProvider.debugEnabled(true);
