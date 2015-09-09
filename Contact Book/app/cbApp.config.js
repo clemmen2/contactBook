@@ -15,8 +15,10 @@
                 controller: 'contCtrl',
                 controllerAs: 'vm'
             })
-            .when('/404', {
-                templateUrl: 'templ/404.html'
+            .when('/error/:fromFile', {
+                templateUrl: 'templ/error.html',
+                controller: 'errorCtrl',
+                controllerAs: 'vm'
             })
             .when('/', {
                 redirectTo: '/home'

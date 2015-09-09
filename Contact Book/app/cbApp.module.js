@@ -1,4 +1,3 @@
 ﻿angular.module('cbApp', [
-    'ngRoute',
-    'ngResource'
+    'ngRoute'
 ]);

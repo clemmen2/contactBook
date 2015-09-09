@@ -2,18 +2,18 @@
     'use strict';
     angular.module('cbApp')
         .controller('homeCtrl', homeCtrl);
-    homeCtrl.$inject = ['api','$log'];
-    function homeCtrl(api,$log) {
+    homeCtrl.$inject = ['api','logger'];
+    function homeCtrl(api,logger) {
         var vm = this;
         vm.error = [];
         api.getList().then(onSuccess, onFailure);
         function onSuccess(response) {
             vm.contacts = response.data;
-            $log.debug('Received and displaying list');
+            logger.debug({ from: 'homeCtrl.js', message: 'Received and displaying list' });
         }
         function onFailure(response) {
             var errMess = { message: 'Something Went Wrong, Please Contact Web Developer' };
-            $log.error(response);
+            logger.error({ from: 'homeCtrl.js', message: response });
             vm.error.push(errMess);
         }
     }

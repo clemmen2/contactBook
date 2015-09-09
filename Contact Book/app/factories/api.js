@@ -2,8 +2,8 @@
     'use strict';
     angular.module('cbApp')
         .factory('api', api);
-    api.$inject = ['$http','$log','$q','auth'];
-    function api($http,$log,$q,auth) {
+    api.$inject = ['$http','logger','$q','auth'];
+    function api($http,logger,$q,auth) {
         var service = {
             addContact: addContact,
             getList: getList,
@@ -30,16 +30,16 @@
             return $http(req).then(onSuccess, onFailure);
             function onSuccess(response) {
                 if(response.status == 200 && response.data.total > 0){
-                    $log.debug('API Status:' + response.status + ' Got the list of contacts');
+                    logger.debug({ from: 'api.js', message: 'API Status:' + response.status + ' Got the list of contacts' });
                     return response.data;
                 }else{
-                    $log.error('API Status:' + response.status + ' Could not get list of contacts');
+                    logger.error({ from: 'api.js', message: 'API Status:' + response.status + ' Could not get list of contacts' });
                     return $q.reject(response.data);
                 }
 
             }
             function onFailure(response) {
-                $log.error('API Status:' + response.status + ' Could not access database');
+                logger.error({ from: 'api.js', message: 'API Status:' + response.status + ' Could not access database' });
                 return $q.reject(response.data);
             }
         }
@@ -49,16 +49,15 @@
             return $http(req).then(onSuccess, onFailure);
             function onSuccess(response) {
                 if (response.status == 200) {
-                    $log.debug('API Status:' + response.status + ' Got the contact with id ' + contactId);
-                    $log.debug(response);
+                    logger.debug({ from: 'api.js', message: 'API Status:' + response.status + ' Got the contact with id ' + contactId });
                     return response.data;
                 } else {
-                    $log.error('API Status:' + response.status + ' Could not get the contact with id ' + contactId);
+                    logger.error({ from: 'api.js', message: 'API Status:' + response.status + ' Could not get the contact with id ' + contactId });
                     return $q.reject(response.data);
                 }
             }
             function onFailure(response) {
-                $log.error('API Status:' + response.status + ' Could not access database');
+                logger.error({ from: 'api.js', message: 'API Status:' + response.status + ' Could not access database' });
                 return $q.reject(response.data);
             }
         }
