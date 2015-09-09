@@ -1,0 +1,6 @@
+﻿<div class='alert alert-danger' role='alert' ng-if='vm.error.length > 0'>
+    <div ng-repeat='error in vm.error'>{{error.message}}</div>
+</div>
+<ul class="list-group">
+    <li ng-repeat='contact in vm.contacts' class='list-group-item'><a href=''>{{contact.last_name}}, {{contact.first_name}}</a></li>
+</ul>

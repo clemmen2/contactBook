@@ -2,8 +2,8 @@
     'use strict';
     angular.module('cbApp')
         .config(config);
-    config.$inject = ['$routeProvider'];
-    function config($routeProvider) {
+    config.$inject = ['$routeProvider','$logProvider'];
+    function config($routeProvider, $logProvider) {
         $routeProvider
             .when('/home', {
                 templateUrl: 'templ/home.html',
@@ -13,5 +13,6 @@
             .when('/', {
                 redirectTo: '/home'
             });
+        $logProvider.debugEnabled(true);
     }
 })();
