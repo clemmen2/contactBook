@@ -3,8 +3,26 @@
 <head>
     <title>Contact Book</title>
 	<meta charset="utf-8" />
+    <!-- Load Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 </head>
-<body>
-    <script src="Scripts/angular.min.js"></script>
+<body ng-app="cbApp">
+
+    <div class="container">
+        <ng-view></ng-view>
+    </div>
+
+    <!-- Import needed frameworks (Jquery is for Angular to use latest update)-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-resource.min.js"></script>
+
+    <!-- My code -->
+    <script src="app/cbApp.module.js"></script>
+    <script src="app/cbApp.config.js""></script>
+    <script src="app/controllers/homeCtrl.js"></script>
 </body>
 </html>
