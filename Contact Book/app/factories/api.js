@@ -20,20 +20,22 @@
 
         }
         function getList() {
-            req.method = 'GET';
-            req.data = {
+            var tmpReq = jQuery.extend(true, {}, req);
+            tmpReq.method = 'GET';
+            tmpReq.data = {
                 "limit": 1,
                 "sort": "first_name" | "last_name" | "address" | "city" | "state" | "zip",
                 "desc": true,
                 "page": 1
             }
-            return $http(req).then(onSuccess, onFailure);
+            return $http(tmpReq).then(onSuccess, onFailure);
             function onSuccess(response) {
                 if(response.status == 200 && response.data.total > 0){
                     logger.debug({ from: 'api.js', message: 'API Status:' + response.status + ' Got the list of contacts' });
                     return response.data;
                 }else{
                     logger.error({ from: 'api.js', message: 'API Status:' + response.status + ' Could not get list of contacts' });
+                    logger.debug({ from: 'api.js', message: response });
                     return $q.reject(response.data);
                 }
 
@@ -44,9 +46,10 @@
             }
         }
         function getContact(contactId) {
-            req.method = 'GET';
-            req.url = req.url + contactId;
-            return $http(req).then(onSuccess, onFailure);
+            var tmpReq = jQuery.extend(true,{},req);
+            tmpReq.method = 'GET';
+            tmpReq.url = tmpReq.url + contactId;
+            return $http(tmpReq).then(onSuccess, onFailure);
             function onSuccess(response) {
                 if (response.status == 200) {
                     logger.debug({ from: 'api.js', message: 'API Status:' + response.status + ' Got the contact with id ' + contactId });

@@ -15,7 +15,7 @@
                 controller: 'contCtrl',
                 controllerAs: 'vm'
             })
-            .when('/error/:fromFile', {
+            .when('/error', {
                 templateUrl: 'templ/error.html',
                 controller: 'errorCtrl',
                 controllerAs: 'vm'
@@ -25,6 +25,9 @@
             })
             .when('/contact', {
                 redirectTo: '/home'
+            })
+            .otherwise({
+                redirectTo: '/error'
             });
         $logProvider.debugEnabled(true);
     }
