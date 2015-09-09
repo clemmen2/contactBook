@@ -6,7 +6,8 @@
         var errorObj = {};
         var service = {
             getError: getError,
-            setError: setError
+            setError: setError,
+            clearError: clearError
         }
         return service;
         function getError() {
@@ -20,6 +21,9 @@
         }
         function setError(incError) {
             errorObj = incError;
+        }
+        function clearError() {
+            errorObj = {};
         }
     }
 })();

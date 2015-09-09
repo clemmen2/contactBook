@@ -7,5 +7,7 @@
         var vm = this;
         logger.debug({ from: 'errorCtrl.js', message: 'Getting the Error' });
         vm.errorObj = errorFact.getError();
+        logger.debug({ from: 'errorCtrl.js', message: 'Clearing the Error' });
+        errorFact.clearError();
     }
 })();
