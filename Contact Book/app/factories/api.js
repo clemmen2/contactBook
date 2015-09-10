@@ -15,7 +15,7 @@
         var req = {
             url: 'http://challenge.acstechnologies.com/api/contact/',
             headers: { 'X-Auth-Token': auth.TOCKEN }
-        }
+        };
         return service;
         function addContact() {
 
@@ -29,7 +29,7 @@
                 "sort": "first_name" | "last_name" | "address" | "city" | "state" | "zip",
                 "desc": true,
                 "page": 1
-            }
+            };
             if (data) {
                 logger.debug({ from: 'api.js', message: 'Using Cached Data for Contact List' });
                 return $q.resolve(data);

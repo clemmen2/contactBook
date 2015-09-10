@@ -1,5 +1,4 @@
 ﻿(function () {
-    'use strict';
     angular.module('cbApp')
         .controller('contCtrl', contCtrl);
     contCtrl.$inject = ['logger','$routeParams','api'];

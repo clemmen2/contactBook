@@ -20,6 +20,11 @@
                 controller: 'errorCtrl',
                 controllerAs: 'vm'
             })
+            .when('/add', {
+                templateUrl: 'templ/add.html',
+                controller: 'addCtrl',
+                controllerAs: 'vm'
+            })
             .when('/', {
                 redirectTo: '/home'
             })

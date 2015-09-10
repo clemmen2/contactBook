@@ -3,9 +3,10 @@
 <head>
     <title>Contact Book</title>
 	<meta charset="utf-8" />
-    <!-- Load Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- build:css styles/frameworks.css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <!-- endbuild -->
 </head>
 <body ng-app="cbApp">
 
@@ -13,25 +14,27 @@
         <ng-view></ng-view>
     </div>
 
-    <!-- Import needed frameworks (Jquery is for Angular to use latest update)-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-resource.min.js"></script>
+    <!-- build:js js/frameworks.js -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <!-- endbuild -->
 
-    <!-- My code -->
+    <!-- build:js js/cbApp.js -->
     <script src="app/cbApp.module.js"></script>
     <script src="app/cbApp.config.js"></script>
     <script src="app/cbApp.constants.js"></script>
     <script src="app/controllers/homeCtrl.js"></script>
     <script src="app/controllers/contCtrl.js"></script>
     <script src="app/controllers/errorCtrl.js"></script>
+    <script src="app/controllers/addCtrl.js"></script>
     <script src="app/factories/api.js"></script>
     <script src="app/factories/logger.js"></script>
     <script src="app/factories/errorFact.js"></script>
     <script src="app/filters/phoneFilt.js"></script>
     <script src="app/filters/firstFilt.js"></script>
+    <!-- endbuild -->
 
 
 </body>

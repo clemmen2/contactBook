@@ -20,7 +20,7 @@
             var errorObj = {
                 from: content.from.toUpperCase(),
                 message: content.message
-            }
+            };
             $log.debug('LOGGER.JS:Setting the error');
             errorFact.setError(errorObj);
             $location.path('/error');

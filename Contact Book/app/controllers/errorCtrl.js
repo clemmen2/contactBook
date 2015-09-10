@@ -1,5 +1,4 @@
 ﻿(function () {
-    'use strict';
     angular.module('cbApp')
         .controller('errorCtrl', errorCtrl);
     errorCtrl.$inject = ['logger', 'errorFact'];

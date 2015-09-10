@@ -22,13 +22,13 @@
             if (phoneNumLen == 10) {
                 phoneArray = tenDigit.exec(tempPhone);
                 newPhone = phoneArray[1] + '-' + phoneArray[2] + '-' + phoneArray[3];
-                if (phoneExt != '')
+                if (phoneExt !== '')
                     newPhone = newPhone + 'x' + phoneExt;
                 return newPhone;
             } else if(phoneNumLen == 11) {
                 phoneArray = elevenDigit.exec(tempPhone);
                 newPhone = '+' + phoneArray[1] + '-' + phoneArray[2] + '-' + phoneArray[3] + '-' + phoneArray[4];
-                if (phoneExt != '')
+                if (phoneExt !== '')
                     newPhone = newPhone + 'x' + phoneExt;
                 return newPhone;
             } else {
