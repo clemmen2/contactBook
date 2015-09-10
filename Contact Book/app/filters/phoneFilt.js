@@ -2,8 +2,7 @@
     'use strict';
     angular.module('cbApp')
         .filter('phoneFilt', phoneFilt);
-    phoneFilt.$inject = ['logger']
-    function phoneFilt(logger) {
+    function phoneFilt() {
         return filter;
         function filter(phoneNum) {
             var phoneArray = [];

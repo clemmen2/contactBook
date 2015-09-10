@@ -69,6 +69,7 @@
     <Content Include="app\controllers\errorCtrl.js" />
     <Content Include="app\factories\errorFact.js" />
     <Content Include="app\factories\logger.js" />
+    <Content Include="app\filters\firstFilt.js" />
     <Content Include="app\filters\phoneFilt.js" />
     <Content Include="Gruntfile.js" />
     <Content Include="packages.config" />

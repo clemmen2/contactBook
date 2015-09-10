@@ -1,24 +1,40 @@
-﻿<div ng-repeat='contact in vm.contacts'>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">{{contact.last_name}}, {{contact.first_name}}<button type="button" class="btn btn-primary btn-xs pull-right">Edit</button></h3>
-            
+﻿<div class="row">
+    <div class="col-md-8">
+        <div class="panel panel-default" ng-repeat="contact in vm.contacts | filter:search | firstFilt:searchLast">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{contact.last_name}}, {{contact.first_name}}<button type="button" class="btn btn-primary btn-xs pull-right" ng-click="vm.edit(contact.id)">Edit</button></h3>
+            </div>
+            <div class="panel-body">
+                <dl class="dl-horizontal">
+                    <dt>Company:</dt>
+                    <dd>{{contact.company_name}}</dd>
+                    <dt>Address:</dt>
+                    <dd>{{contact.address}}<br />{{contact.city}}, {{contact.state}} {{contact.zip}}</dd>
+                    <dt>Email:</dt>
+                    <dd>{{contact.email}}</dd>
+                    <dt>Phone:</dt>
+                    <dd>{{contact.phone | phoneFilt}}</dd>
+                    <dt>Work Phone:</dt>
+                    <dd>{{contact.work_phone | phoneFilt}}</dd>
+                    <dt>Website</dt>
+                    <dd><a href="{{contact.url}}">{{contact.url}}</a></dd>
+                </dl>
+            </div>
         </div>
-        <div class="panel-body">
-            <dl class="dl-horizontal">
-                <dt>Company:</dt>
-                <dd>{{contact.company_name}}</dd>
-                <dt>Address:</dt>
-                <dd>{{contact.address}}<br />{{contact.city}}, {{contact.state}} {{contact.zip}}</dd>
-                <dt>Email:</dt>
-                <dd>{{contact.email}}</dd>
-                <dt>Phone:</dt>
-                <dd>{{contact.phone | phoneFilt}}</dd>
-                <dt>Work Phone:</dt>
-                <dd>{{contact.work_phone | phoneFilt}}</dd>
-                <dt>Website</dt>
-                <dd><a href="{{contact.url}}">{{contact.url}}</a></dd>
-            </dl>
-        </div>
+    </div>
+    <div class="col-md-4">
+        <form class="form-horzontal">
+            <div class="form-group">
+                <label for="searchBox" class="col-sm-4 control-label">Search</label>
+                <input type="text" class="form-control" placeholder="Search"  ng-model="search"/>
+            </div>
+            <div class="form-group">
+                <label for="selectFilter" class="col-sm-4 control-label">Filter by Last Name</label>
+                <select class="form-control" id="selectFilter" ng-model="searchLast">
+                        <option></option>
+                        <option ng-repeat="letter in vm.filterLast">{{letter}}</option>
+                </select>
+            </div>
+        </form>
     </div>
 </div>
