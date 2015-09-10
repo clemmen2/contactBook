@@ -7,6 +7,7 @@
         vm.contactId = $routeParams.contId;
         vm.home = home;
         vm.edit = edit;
+        vm.remove = remove;
         api.getContact(vm.contactId).then(onSuccess, onFailure);
         function onSuccess(response) {
             vm.contact = response;
@@ -19,6 +20,9 @@
             $location.path('/home');
         }
         function edit() {
+            logger.debug({ from: 'contCtrl.js', message: 'Editing Contact' });
+        }
+        function remove(){
 
         }
     }

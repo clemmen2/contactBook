@@ -39,7 +39,6 @@
                 if (response.status == 200 && response.data.total > 0) {
                     logger.debug({ from: 'api.js', message: 'API Status:' + response.status + ' Got the list of contacts' });
                     apiCache.put('contactList', response.data);
-                    console.log(apiCache.get('contactList'));
                     return response.data;
                 } else {
                     logger.error({ from: 'api.js', message: 'API Status:' + response.status + ' Could not get list of contacts' });

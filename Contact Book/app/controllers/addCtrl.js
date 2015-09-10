@@ -1,7 +1,16 @@
 ﻿(function () {
     angular.module('cbApp')
         .controller('addCtrl', addCtrl);
-    addCtrl.$inject = ['api', 'logger'];
-    function addCtrl(api, logger) {
+    addCtrl.$inject = ['$location','api', 'logger'];
+    function addCtrl($location, api, logger) {
+        var vm = this;
+        vm.create = create;
+        vm.home = home;
+        function create() {
+            logger.debug({ from: 'addCtrl.js', message: 'Creating Contact' });
+        }
+        function home() {
+            $location.path('/home');
+        }
     }
 })();
