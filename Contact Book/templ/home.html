@@ -1,6 +1,24 @@
-﻿<div class='alert alert-danger' role='alert' ng-if='vm.error.length > 0'>
-    <div ng-repeat='error in vm.error'>{{error.message}}</div>
+﻿<div ng-repeat='contact in vm.contacts'>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{contact.last_name}}, {{contact.first_name}}<button type="button" class="btn btn-primary btn-xs pull-right">Edit</button></h3>
+            
+        </div>
+        <div class="panel-body">
+            <dl class="dl-horizontal">
+                <dt>Company:</dt>
+                <dd>{{contact.company_name}}</dd>
+                <dt>Address:</dt>
+                <dd>{{contact.address}}<br />{{contact.city}}, {{contact.state}} {{contact.zip}}</dd>
+                <dt>Email:</dt>
+                <dd>{{contact.email}}</dd>
+                <dt>Phone:</dt>
+                <dd>{{contact.phone | phoneFilt}}</dd>
+                <dt>Work Phone:</dt>
+                <dd>{{contact.work_phone | phoneFilt}}</dd>
+                <dt>Website</dt>
+                <dd><a href="{{contact.url}}">{{contact.url}}</a></dd>
+            </dl>
+        </div>
+    </div>
 </div>
-<ul class="list-group">
-    <li ng-repeat='contact in vm.contacts' class='list-group-item'><a href='#/contact/{{contact.id}}'>{{contact.last_name}}, {{contact.first_name}}</a></li>
-</ul>
