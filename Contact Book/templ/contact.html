@@ -1,1 +1,74 @@
-﻿{{vm.contact.last_name}}, {{vm.contact.first_name}}
+﻿<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h1 class="panel-title">Edit Contact {{vm.contact.last_name}}, {{vm.contact.first_name}}<button type="button" class="btn btn-primary btn-xs pull-right" ng-click="vm.home()">Home</button></h1>
+        </div>
+        <div class="panel-body">
+            <form>
+                <div class="form-group col-sm-6 col-md-4">
+                    <label for="firstName" class="control-label">First Name</label>
+                    <input type="text" class="form-control" placeholder="First Name" ng-model="vm.contact.first_name" id="firstName" />
+                </div>
+                <div class="form-group col-sm-6 col-md-4">
+                    <label for="lastName" class="control-label">Last Name</label>
+                    <input type="text" class="form-control" placeholder="First Name" ng-model="vm.contact.last_name" id="lastName" />
+                </div>
+                <div class="form-group col-sm-12 col-md-4">
+                    <label for="company" class="control-label">Company</label>
+                    <input type="text" class="form-control" placeholder="Company" ng-model="vm.contact.company_name" id="company" />
+                </div>
+                <div class="form-group col-sm-12 col-md-6">
+                    <label for="url" class="control-label">Website</label>
+                    <input type="text" class="form-control" placeholder="Website" ng-model="vm.contact.url" id="url" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="address" class="control-label">Address</label>
+                    <input type="text" class="form-control" placeholder="Address" ng-model="vm.contact.address" id="address" />
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="city" class="control-label">City</label>
+                    <input type="text" class="form-control" placeholder="City" ng-model="vm.contact.city" id="city" />
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="state" class="control-label">State</label>
+                    <input type="text" class="form-control" placeholder="State" ng-model="vm.contact.state" id="State" />
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="zip" class="control-label">Zip</label>
+                    <input type="text" class="form-control" placeholder="Zip" ng-model="vm.contact.zip" id="zip" />
+                </div>
+                <div class="form-group col-sm-6 col-md-4">
+                    <label for="email" class="control-label">Email</label>
+                    <input type="text" class="form-control" placeholder="Email" ng-model="vm.contact.email" id="email" />
+                </div>
+                <div class="form-group col-sm-3 col-md-4">
+                    <label for="phone" class="control-label">Phone</label>
+                    <input type="text" class="form-control" placeholder="Phone" ng-model="vm.contact.phone" id="phone" />
+                </div>
+                <div class="form-group col-sm-3 col-md-4">
+                    <label for="work" class="control-label">Work Phone</label>
+                    <input type="text" class="form-control" placeholder="Work Phone" ng-model="vm.contact.work_phone" id="work" />
+                </div>
+                <button type="button" class="btn btn-success" ng-click="vm.edit()">Submit Changes</button>
+                <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#ruSure">Delete Contact</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="ruSure" tabindex="-1" role="dialog" aria-labelledby="Are you sure">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Are You Sure?</h4>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete the contact {{vm.contact.first_name}} {{vm.contact.last_name}}?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Yes</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
