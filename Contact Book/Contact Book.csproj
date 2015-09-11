@@ -68,6 +68,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\constants\contactConst.js" />
     <Content Include="app\constants\regexpConst.js" />
     <Content Include="app\controllers\addCtrl.js" />
     <Content Include="app\controllers\alertCtrl.js" />

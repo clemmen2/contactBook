@@ -22,7 +22,7 @@
         }
         function getList() {
             var data = apiCache.get('contactList');
-            var tmpReq = jQuery.extend(true, {}, req);
+            var tmpReq = angular.copy(req);
             tmpReq.method = 'GET';
             tmpReq.data = {
                 "limit": 1,
@@ -53,7 +53,7 @@
             }
         }
         function getContact(contactId) {
-            var tmpReq = jQuery.extend(true, {}, req);
+            var tmpReq = angular.copy(req);
             var data = apiCache.get('contact' + contactId);
             tmpReq.method = 'GET';
             tmpReq.url = tmpReq.url + contactId;

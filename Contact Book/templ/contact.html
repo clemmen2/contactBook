@@ -4,52 +4,86 @@
             <h1 class="panel-title">Edit Contact {{vm.contact.last_name}}, {{vm.contact.first_name}}<button type="button" class="btn btn-primary btn-xs pull-right" ng-click="vm.home()">Home</button></h1>
         </div>
         <div class="panel-body">
-            <form ng-submit="vm.edit()">
-                <div class="form-group col-sm-6 col-md-4">
-                    <label for="firstName" class="control-label">First Name</label>
-                    <input type="text" class="form-control" placeholder="First Name" ng-model="vm.contact.first_name" id="firstName" />
+            <div class="alert alert-danger" role="alert" ng-show="!createForm.$valid && createForm.$submitted">
+                <div ng-messages="createForm.firstName.$error">
+                    <div ng-message="required">First Name required</div>
+                    <div ng-message="pattern">Not a valid first name (all letters and ' are valid characters)</div>
                 </div>
-                <div class="form-group col-sm-6 col-md-4">
-                    <label for="lastName" class="control-label">Last Name</label>
-                    <input type="text" class="form-control" placeholder="First Name" ng-model="vm.contact.last_name" id="lastName" />
+                <div ng-messages="createForm.lastName.$error">
+                    <div ng-message="pattern">Not a valid last name (all letters and ' are valid characters)</div>
+                </div>
+                <div ng-messages="createForm.url.$error">
+                    <div ng-message="pattern">Not a valid website url (HINT: must start with http:// or https://)</div>
+                </div>
+                <div ng-messages="createForm.address.$error">
+                    <div ng-message="pattern">Not a valid address (make sure you have house number first)</div>
+                </div>
+                <div ng-messages="createForm.city.$error">
+                    <div ng-message="pattern">Not a valid city name (all letters the ' and . are valid characters)</div>
+                </div>
+                <div ng-messages="createForm.state.$error">
+                    <div ng-message="pattern">Not a valid state name (all letters the ' and . are valid characters)</div>
+                </div>
+                <div ng-messages="createForm.zip.$error">
+                    <div ng-message="pattern">Not a valid zip code (can be either 5 digits or 9 digits)</div>
+                </div>
+                <div ng-messages="createForm.email.$error">
+                    <div ng-message="pattern">Not a valid email address (did you forget the @ symbol?)</div>
+                </div>
+                <div ng-messages="createForm.phone.$error">
+                    <div ng-message="pattern">Not a valid phone number (must be at least 10 digits and use x for extinsions)</div>
+                </div>
+                <div ng-messages="createForm.work.$error">
+                    <div ng-message="pattern">Not a valid work phone number (must be at least 10 digits and use x for extinsions)</div>
+                </div>
+            </div>
+            <form novalidate name='createForm' ng-submit="vm.edit()">
+                <div class="form-group col-sm-6 col-md-4" ng-class="{ 'has-error': createForm.firstName.$touched && createForm.firstName.$invalid }">
+                    <label class="control-label">First Name</label>
+                    <input type="text" class="form-control" placeholder="First Name" name='firstName' ng-model="vm.contact.first_name" ng-pattern="vm.regExp.NAME" required />
+                </div>
+                <div class="form-group col-sm-6 col-md-4" ng-class="{ 'has-error': createForm.lastName.$touched && createForm.lastName.$invalid }">
+                    <label class="control-label">Last Name</label>
+                    <input type="text" class="form-control" placeholder="Last Name" name='lastName' ng-model="vm.contact.last_name" ng-pattern="vm.regExp.NAME" />
                 </div>
                 <div class="form-group col-sm-12 col-md-4">
-                    <label for="company" class="control-label">Company</label>
-                    <input type="text" class="form-control" placeholder="Company" ng-model="vm.contact.company_name" id="company" />
+                    <label class="control-label">Company</label>
+                    <input type="text" class="form-control" placeholder="Company" name='company' ng-model="vm.contact.company_name" />
                 </div>
-                <div class="form-group col-sm-12 col-md-6">
-                    <label for="url" class="control-label">Website</label>
-                    <input type="text" class="form-control" placeholder="Website" ng-model="vm.contact.url" id="url" />
+                <div class="form-group col-sm-12 col-md-6" ng-class="{ 'has-error': createForm.url.$touched && createForm.url.$invalid }">
+                    <label class="control-label">Website</label>
+                    <input type="url" class="form-control" placeholder="Website" name='url' ng-model="vm.contact.url" ng-pattern="vm.regExp.URL" />
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="address" class="control-label">Address</label>
-                    <input type="text" class="form-control" placeholder="Address" ng-model="vm.contact.address" id="address" />
+                <div class="form-group col-md-6" ng-class="{ 'has-error': createForm.address.$touched && createForm.address.$invalid }">
+                    <label class="control-label">Address</label>
+                    <input type="text" class="form-control" placeholder="Address" name='address' ng-model="vm.contact.address" ng-pattern="vm.regExp.ADDRESS" />
                 </div>
-                <div class="form-group col-sm-4">
-                    <label for="city" class="control-label">City</label>
-                    <input type="text" class="form-control" placeholder="City" ng-model="vm.contact.city" id="city" />
+                <div class="form-group col-sm-4" ng-class="{ 'has-error': createForm.city.$touched && createForm.city.$invalid }">
+                    <label class="control-label">City</label>
+                    <input type="text" class="form-control" placeholder="City" name='city' ng-model="vm.contact.city" ng-pattern="vm.regExp.CITYSTATE" />
                 </div>
-                <div class="form-group col-sm-4">
-                    <label for="state" class="control-label">State</label>
-                    <input type="text" class="form-control" placeholder="State" ng-model="vm.contact.state" id="State" />
+                <div class="form-group col-sm-4" ng-class="{ 'has-error': createForm.state.$touched && createForm.state.$invalid }">
+                    <label class="control-label">State</label>
+                    <input type="text" class="form-control" placeholder="State" name='state' ng-model="vm.contact.state" ng-pattern="vm.regExp.CITYSTATE" />
                 </div>
-                <div class="form-group col-sm-4">
-                    <label for="zip" class="control-label">Zip</label>
-                    <input type="text" class="form-control" placeholder="Zip" ng-model="vm.contact.zip" id="zip" />
+                <div class="form-group col-sm-4" ng-class="{ 'has-error': createForm.zip.$touched && createForm.zip.$invalid }">
+                    <label class="control-label">Zip</label>
+                    <input type="text" class="form-control" placeholder="Zip" name='zip' ng-model="vm.contact.zip" ng-pattern="vm.regExp.ZIP" />
                 </div>
-                <div class="form-group col-sm-6 col-md-4">
-                    <label for="email" class="control-label">Email</label>
-                    <input type="text" class="form-control" placeholder="Email" ng-model="vm.contact.email" id="email" />
+                <div class="form-group col-sm-6 col-md-4" ng-class="{ 'has-error': createForm.email.$touched && createForm.email.$invalid }">
+                    <label class="control-label">Email</label>
+                    <input type="email" class="form-control" placeholder="Email" name='email' ng-model="vm.contact.email" ng-pattern="vm.regExp.EMAIL" />
                 </div>
-                <div class="form-group col-sm-3 col-md-4">
-                    <label for="phone" class="control-label">Phone</label>
-                    <input type="text" class="form-control" placeholder="Phone" ng-model="vm.contact.phone" id="phone" />
+                <div class="form-group col-sm-3 col-md-4" ng-class="{ 'has-error': createForm.phone.$touched && createForm.phone.$invalid }">
+                    <label class="control-label">Phone</label>
+                    <input type="tel" class="form-control" placeholder="Phone" name='phone' ng-model="vm.contact.phone" ng-pattern="vm.regExp.PHONE" />
                 </div>
-                <div class="form-group col-sm-3 col-md-4">
-                    <label for="work" class="control-label">Work Phone</label>
-                    <input type="text" class="form-control" placeholder="Work Phone" ng-model="vm.contact.work_phone" id="work" />
+                <div class="form-group col-sm-3 col-md-4" ng-class="{ 'has-error': createForm.work.$touched && createForm.work.$invalid }">
+                    <label class="control-label">Work Phone</label>
+                    <input type="tel" class="form-control" placeholder="Work Phone" name='work' ng-model="vm.contact.work_phone" ng-pattern="vm.regExp.PHONE" />
                 </div>
                 <button type="submit" class="btn btn-success">Submit Changes</button>
+                <button type="button" ng-click="vm.reset()" class="btn btn-warning">Reset</button>
                 <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#ruSure">Delete Contact</button>
             </form>
         </div>
