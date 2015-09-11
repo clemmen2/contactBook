@@ -1,3 +1,4 @@
 ﻿angular.module('cbApp', [
-    'ngRoute'
+    'ngRoute',
+    'ngMessages'
 ]);

@@ -2,8 +2,8 @@
     'use strict';
     angular.module('cbApp')
         .factory('api', api);
-    api.$inject = ['$http','logger','$q','$cacheFactory','auth'];
-    function api($http, logger, $q, $cacheFactory, auth) {
+    api.$inject = ['$http','logger','$q','$cacheFactory','authConst'];
+    function api($http, logger, $q, $cacheFactory, authConst) {
         var apiCache = $cacheFactory('apiCache');
         var service = {
             addContact: addContact,
@@ -14,7 +14,7 @@
         };
         var req = {
             url: 'http://challenge.acstechnologies.com/api/contact/',
-            headers: { 'X-Auth-Token': auth.TOCKEN }
+            headers: { 'X-Auth-Token': authConst.TOCKEN }
         };
         return service;
         function addContact() {
