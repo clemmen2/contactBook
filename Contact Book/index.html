@@ -12,7 +12,7 @@
         <div class="container">
             <div class="row">
                 <div ng-controller="alertCtrl as vm">
-                    <div class="alert {{vm.alertObj.alertType}}" role="alert" ng-show="vm.showAlert">
+                    <div class="alert {{vm.alertObj.alertType}} fade in" role="alert" ng-show="vm.showAlert">
                         <button type="button" class="close" ng-click="vm.close()"><span aria-hidden="true">&times;</span></button>
                         {{vm.alertObj.message}}
                     </div>

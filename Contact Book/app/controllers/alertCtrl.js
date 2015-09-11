@@ -7,6 +7,7 @@
         vm.showAlert = false;
         vm.close = close;
         $scope.$on('alert', show);
+        $scope.$on('alertOff', close);
         function close(){
             vm.showAlert = false;
         }

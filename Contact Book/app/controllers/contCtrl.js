@@ -1,8 +1,8 @@
 ﻿(function () {
     angular.module('cbApp')
         .controller('contCtrl', contCtrl);
-    contCtrl.$inject = ['logger','$routeParams','$location','$scope','api','regexpConst','contactConst'];
-    function contCtrl(logger, $routeParams,$location,$scope, api, regexpConst,contactConst) {
+    contCtrl.$inject = ['logger','$routeParams','$location','$scope','$rootScope','$timeout','api','regexpConst','contactConst'];
+    function contCtrl(logger, $routeParams, $location, $scope, $rootScope, $timeout, api, regexpConst,contactConst) {
         var vm = this;
         var originalContact = {};
         vm.contactId = $routeParams.contId;
@@ -26,8 +26,16 @@
         function edit() {
             logger.debug({ from: 'contCtrl.js', message: 'Editing Contact' });
         }
-        function remove(){
+        function remove(contactId){
             logger.debug({ from: 'contCtrl.js', message: 'Deleting Contact' });
+            api.deleteContact(contactId).then(onSucc);
+            function onSucc(response) {
+                $timeout(closeAlert, 5000);
+                $location.path('/home');
+            }
+            function closeAlert() {
+                $rootScope.$broadcast('alertOff');
+            }
         }
         function reset() {
             vm.contact = angular.copy(originalContact);

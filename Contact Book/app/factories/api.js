@@ -17,8 +17,22 @@
             headers: { 'X-Auth-Token': authConst.TOCKEN }
         };
         return service;
-        function addContact() {
-
+        function addContact(contact) {
+            var tmpReq = angular.copy(req);
+            tmpReq.method = 'POST';
+            tmpReq.data = contact;
+            return $http(tmpReq).then(onSuccess, onFailure);
+            function onSuccess(response) {
+                logger.success({ from: 'api.js', message: 'Successfully added ' + response.data.new_contact.first_name });
+                logger.debug({ from: 'api.js', message: 'with id ' + response.data.new_contact.id });
+                apiCache.remove('contactList');
+                return response.data;
+            }
+            function onFailure(response) {
+                logger.error({ from: 'api.js', message: 'Could not add new contact' });
+                logger.debug({ from: 'api.js', message: 'API Status:' + response.status });
+                return $q.reject(response.data);
+            }
         }
         function getList() {
             var data = apiCache.get('contactList');
@@ -41,14 +55,15 @@
                     apiCache.put('contactList', response.data);
                     return response.data;
                 } else {
-                    logger.error({ from: 'api.js', message: 'API Status:' + response.status + ' Could not get list of contacts' });
-                    logger.debug({ from: 'api.js', message: response });
+                    logger.error({ from: 'api.js', message: 'Could not get list of contacts' });
+                    logger.debug({ from: 'api.js', message: 'API Status:' + response.status });
                     return $q.reject(response.data);
                 }
 
             }
             function onFailure(response) {
-                logger.error({ from: 'api.js', message: 'API Status:' + response.status + ' Could not access database' });
+                logger.error({ from: 'api.js', message: 'Could not access database' });
+                logger.debug({ from: 'api.js', message: 'API Status:' + response.status });
                 return $q.reject(response.data);
             }
         }
@@ -68,20 +83,37 @@
                     apiCache.put('contact' + contactId, response.data);
                     return response.data;
                 } else {
-                    logger.error({ from: 'api.js', message: 'API Status:' + response.status + ' Could not get the contact with id ' + contactId });
+                    logger.error({ from: 'api.js', message: 'Could not get the contact' });
+                    logger.debug({ from: 'api.js', message: 'with id ' + contactId });
+                    logger.debug({ from: 'api.js', message: 'API Status:' + response.status });
                     return $q.reject(response.data);
                 }
             }
             function onFailure(response) {
-                logger.error({ from: 'api.js', message: 'API Status:' + response.status + ' Could not access database' });
+                logger.error({ from: 'api.js', message: 'Could not access database' });
+                logger.debug({ from: 'api.js', message: 'API Status:' + response.status });
                 return $q.reject(response.data);
             }
         }
         function updateContact() {
 
         }
-        function deleteContact() {
-
+        function deleteContact(contactId) {
+            var tmpReq = angular.copy(req);
+            tmpReq.method = 'DELETE';
+            tmpReq.url = tmpReq.url + contactId;
+            return $http(tmpReq).then(onSuccess, onFailure);
+            function onSuccess(response) {
+                logger.warning({ from: 'api.js', message: 'Successfully removed contact' });
+                logger.debug({ from: 'api.js', message: 'with id ' + contactId });
+                apiCache.remove('contactList');
+                return response.data;
+            }
+            function onFailure(response) {
+                logger.error({ from: 'api.js', message: 'Could not remove contact' });
+                logger.debug({ from: 'api.js', message: 'API Status:' + response.status });
+                return $q.reject(response.data);
+            }
         }
     }
 })();
