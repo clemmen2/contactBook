@@ -2,13 +2,14 @@
     'use strict';
     angular.module('cbApp')
         .factory('logger', logger);
-    logger.$inject = ['$log','$location','errorFact'];
-    function logger($log,$location,errorFact) {
+    logger.$inject = ['$log','$location','$rootScope'];
+    function logger($log,$location,$rootScope) {
         var service = {
             debug: debug,
             error: error,
             info: info,
             warning: warning,
+            success: success,
             log: log
         };
         return service;
@@ -16,23 +17,27 @@
             $log.debug(content.from.toUpperCase() + ':' + content.message);
         }
         function error(content) {
-            $log.error(content.from.toUpperCase() + ':' + content.message);
-            var errorObj = {
-                from: content.from.toUpperCase(),
-                message: content.message
-            };
-            $log.debug('LOGGER.JS:Setting the error');
-            errorFact.setError(errorObj);
-            $location.path('/error');
+            sendAlert(content.from, content.message, 'alert-danger');
         }
         function info(content) {
-            $log.info(content.from.toUpperCase() + ':' + content.message);
+            sendAlert(content.from, content.message, 'alert-info');
         }
         function warning(content) {
-            $log.warn(content.from.toUpperCase() + ':' + content.message);
+            sendAlert(content.from, content.message, 'alert-warning');
         }
         function log(content) {
             $log.log(content.from.toUpperCase() + ':' + content.message);
-        }        
+        }
+        function success(content) {
+            sendAlert(content.from, content.message, 'alert-success');
+        }
+        function sendAlert(from, mess, type) {
+            var alertObj = {
+                message: mess,
+                alertType: type
+            };
+            $log.debug(type + ':' + from.toUpperCase() + ':' + mess);
+            $rootScope.$broadcast('alert', alertObj);
+        }
     }
 })();

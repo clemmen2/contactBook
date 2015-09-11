@@ -7,18 +7,21 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
     <!-- endbuild -->
-    <style>
-        body {
-            padding-top: 50px;
-        }
-    </style>
 </head>
 <body ng-app="cbApp">
-
-    <div class="container">
-        <ng-view></ng-view>
-    </div>
-
+        <div class="container">
+            <div class="row">
+                <div ng-controller="alertCtrl as vm">
+                    <div class="alert {{vm.alertObj.alertType}}" role="alert" ng-show="vm.showAlert">
+                        <button type="button" class="close" ng-click="vm.close()"><span aria-hidden="true">&times;</span></button>
+                        {{vm.alertObj.message}}
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="padding-top: 15px">
+                <ng-view></ng-view>
+            </div>
+        </div>
     <!-- build:js js/frameworks.js -->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -34,9 +37,9 @@
     <script src="app/controllers/contCtrl.js"></script>
     <script src="app/controllers/errorCtrl.js"></script>
     <script src="app/controllers/addCtrl.js"></script>
+    <script src="app/controllers/alertCtrl.js"></script>
     <script src="app/factories/api.js"></script>
     <script src="app/factories/logger.js"></script>
-    <script src="app/factories/errorFact.js"></script>
     <script src="app/filters/phoneFilt.js"></script>
     <script src="app/filters/firstFilt.js"></script>
     <!-- endbuild -->

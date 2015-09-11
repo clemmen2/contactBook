@@ -69,8 +69,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\controllers\addCtrl.js" />
-    <Content Include="app\controllers\errorCtrl.js" />
-    <Content Include="app\factories\errorFact.js" />
+    <Content Include="app\controllers\alertCtrl.js" />
+    <Content Include="app\controllers\nfCtrl.js" />
     <Content Include="app\factories\logger.js" />
     <Content Include="app\filters\firstFilt.js" />
     <Content Include="app\filters\phoneFilt.js" />
@@ -88,7 +88,7 @@
   <ItemGroup>
     <Content Include="app\controllers\contCtrl.js" />
     <Content Include="templ\add.html" />
-    <Content Include="templ\error.html" />
+    <Content Include="templ\404.html" />
     <Content Include="app\cbApp.config.js" />
     <Content Include="app\cbApp.module.js" />
     <Content Include="app\cbApp.constants.js" />

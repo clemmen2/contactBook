@@ -15,9 +15,9 @@
                 controller: 'contCtrl',
                 controllerAs: 'vm'
             })
-            .when('/error', {
-                templateUrl: 'templ/error.html',
-                controller: 'errorCtrl',
+            .when('/404', {
+                templateUrl: 'templ/404.html',
+                controller: 'nfCtrl',
                 controllerAs: 'vm'
             })
             .when('/add', {
@@ -32,7 +32,7 @@
                 redirectTo: '/home'
             })
             .otherwise({
-                redirectTo: '/error'
+                redirectTo: '/404'
             });
         $logProvider.debugEnabled(true);
     }
