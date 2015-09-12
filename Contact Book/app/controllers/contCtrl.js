@@ -25,6 +25,10 @@
         }
         function edit() {
             logger.debug({ from: 'contCtrl.js', message: 'Editing Contact' });
+            api.updateContact(vm.contact).then(onSucc);
+            function onSucc(response) {
+                $timeout(closeAlert, 5000);
+            }
         }
         function remove(contactId){
             logger.debug({ from: 'contCtrl.js', message: 'Deleting Contact' });
@@ -33,9 +37,6 @@
                 $timeout(closeAlert, 5000);
                 $location.path('/home');
             }
-            function closeAlert() {
-                $rootScope.$broadcast('alertOff');
-            }
         }
         function reset() {
             vm.contact = angular.copy(originalContact);
@@ -43,6 +44,9 @@
             $scope.createForm.$setUntouched();
             $scope.createForm.$setValidity();
             $scope.createForm.$submitted = false;
+        }
+        function closeAlert() {
+            $rootScope.$broadcast('alertOff');
         }
     }
 })();

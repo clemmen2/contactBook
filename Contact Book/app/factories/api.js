@@ -95,8 +95,22 @@
                 return $q.reject(response.data);
             }
         }
-        function updateContact() {
-
+        function updateContact(contact) {
+            var tmpReq = angular.copy(req);
+            tmpReq.method = 'PUT';
+            tmpReq.url = tmpReq.url + contact.id;
+            tmpReq.data = contact;
+            return $http(tmpReq).then(onSuccess, onFailure);
+            function onSuccess(response) {
+                logger.success({ from: 'api.js', message: 'Successfully updated contact ' + contact.first_name });
+                apiCache.remove('contactList');
+                return response.data;
+            }
+            function onFailure(response) {
+                logger.error({ from: 'api.js', message: 'Could not update contact ' + contact.first_name });
+                logger.debug({ from: 'api.js', message: 'with id ' + contact.id });
+                return $q.reject(response.data);
+            }
         }
         function deleteContact(contactId) {
             var tmpReq = angular.copy(req);
