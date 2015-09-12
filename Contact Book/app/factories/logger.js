@@ -10,7 +10,8 @@
             info: info,
             warning: warning,
             success: success,
-            log: log
+            log: log,
+            closeAlert: closeAlert
         };
         return service;
         function debug(content) {
@@ -38,6 +39,9 @@
             };
             $log.debug(type + ':' + from.toUpperCase() + ':' + mess);
             $rootScope.$broadcast('alert', alertObj);
+        }
+        function closeAlert() {
+            $rootScope.$broadcast('alertOff');
         }
     }
 })();

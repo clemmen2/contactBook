@@ -1,14 +1,14 @@
 ﻿(function () {
     angular.module('cbApp')
         .controller('alertCtrl', alertCtrl);
-    alertCtrl.$inject = ['$scope','logger'];
-    function alertCtrl($scope,logger) {
+    alertCtrl.$inject = ['$scope'];
+    function alertCtrl($scope) {
         var vm = this;
-        vm.showAlert = false;
         vm.close = close;
+        vm.showAlert = false;
         $scope.$on('alert', show);
         $scope.$on('alertOff', close);
-        function close(){
+        function close() {
             vm.showAlert = false;
         }
         function show(event, alertObj) {

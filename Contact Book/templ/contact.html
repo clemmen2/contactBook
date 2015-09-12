@@ -37,7 +37,7 @@
                     <div ng-message="pattern">Not a valid work phone number (must be at least 10 digits and use x for extinsions)</div>
                 </div>
             </div>
-            <form novalidate name='createForm' ng-submit="vm.edit()">
+            <form novalidate name='createForm' ng-submit="vm.update()">
                 <div class="form-group col-sm-6 col-md-4" ng-class="{ 'has-error': createForm.firstName.$touched && createForm.firstName.$invalid }">
                     <label class="control-label">First Name</label>
                     <input type="text" class="form-control" placeholder="First Name" name='firstName' ng-model="vm.contact.first_name" ng-pattern="vm.regExp.NAME" required />

@@ -2,8 +2,8 @@
     'use strict';
     angular.module('cbApp')
         .factory('api', api);
-    api.$inject = ['$http','logger','$q','$cacheFactory','authConst'];
-    function api($http, logger, $q, $cacheFactory, authConst) {
+    api.$inject = ['$http','logger','$q','$cacheFactory','$timeout','authConst'];
+    function api($http, logger, $q, $cacheFactory, $timeout, authConst) {
         var apiCache = $cacheFactory('apiCache');
         var service = {
             addContact: addContact,
@@ -21,11 +21,13 @@
             var tmpReq = angular.copy(req);
             tmpReq.method = 'POST';
             tmpReq.data = contact;
+            logger.info({ from: 'api.js', message: 'Creating Contact. Please Wait...' });
             return $http(tmpReq).then(onSuccess, onFailure);
             function onSuccess(response) {
                 logger.success({ from: 'api.js', message: 'Successfully added ' + response.data.new_contact.first_name });
                 logger.debug({ from: 'api.js', message: 'with id ' + response.data.new_contact.id });
                 apiCache.remove('contactList');
+                $timeout(logger.closeAlert, 5000);
                 return response.data;
             }
             function onFailure(response) {
@@ -44,8 +46,10 @@
                 "desc": true,
                 "page": 1
             };
+            logger.info({ from: 'api.js', message: 'Loading Contacts. Please Wait...' });
             if (data) {
                 logger.debug({ from: 'api.js', message: 'Using Cached Data for Contact List' });
+                logger.closeAlert();
                 return $q.resolve(data);
             } else
                 return $http(tmpReq).then(onSuccess, onFailure);
@@ -53,6 +57,7 @@
                 if (response.status == 200 && response.data.total > 0) {
                     logger.debug({ from: 'api.js', message: 'API Status:' + response.status + ' Got the list of contacts' });
                     apiCache.put('contactList', response.data);
+                    logger.closeAlert();
                     return response.data;
                 } else {
                     logger.error({ from: 'api.js', message: 'Could not get list of contacts' });
@@ -64,6 +69,7 @@
             function onFailure(response) {
                 logger.error({ from: 'api.js', message: 'Could not access database' });
                 logger.debug({ from: 'api.js', message: 'API Status:' + response.status });
+                $timeout(logger.closeAlert, 5000);
                 return $q.reject(response.data);
             }
         }
@@ -72,8 +78,10 @@
             var data = apiCache.get('contact' + contactId);
             tmpReq.method = 'GET';
             tmpReq.url = tmpReq.url + contactId;
+            logger.info({ from: 'api.js', message: 'Getting the Contact. Please Wait...' });
             if (data) {
                 logger.debug({ from: 'api.js', message: 'Using Cached Data for Contact ' + contactId });
+                logger.closeAlert();
                 return $q.resolve(data);
             }else
                 return $http(tmpReq).then(onSuccess, onFailure);
@@ -81,6 +89,7 @@
                 if (response.status == 200) {
                     logger.debug({ from: 'api.js', message: 'API Status:' + response.status + ' Got the contact with id ' + contactId });
                     apiCache.put('contact' + contactId, response.data);
+                    logger.closeAlert();
                     return response.data;
                 } else {
                     logger.error({ from: 'api.js', message: 'Could not get the contact' });
@@ -90,7 +99,8 @@
                 }
             }
             function onFailure(response) {
-                logger.error({ from: 'api.js', message: 'Could not access database' });
+                logger.error({ from: 'api.js', message: 'Could not get the contact' });
+                logger.debug({ from: 'api.js', message: 'with id ' + contactId });
                 logger.debug({ from: 'api.js', message: 'API Status:' + response.status });
                 return $q.reject(response.data);
             }
@@ -100,10 +110,12 @@
             tmpReq.method = 'PUT';
             tmpReq.url = tmpReq.url + contact.id;
             tmpReq.data = contact;
+            logger.info({ from: 'api.js', message: 'Updating Contact. Please Wait...' });
             return $http(tmpReq).then(onSuccess, onFailure);
             function onSuccess(response) {
                 logger.success({ from: 'api.js', message: 'Successfully updated contact ' + contact.first_name });
                 apiCache.remove('contactList');
+                $timeout(logger.closeAlert, 5000);
                 return response.data;
             }
             function onFailure(response) {
@@ -116,11 +128,13 @@
             var tmpReq = angular.copy(req);
             tmpReq.method = 'DELETE';
             tmpReq.url = tmpReq.url + contactId;
+            logger.info({ from: 'api.js', message: 'Removing Contact. Please Wait...' });
             return $http(tmpReq).then(onSuccess, onFailure);
             function onSuccess(response) {
                 logger.warning({ from: 'api.js', message: 'Successfully removed contact' });
                 logger.debug({ from: 'api.js', message: 'with id ' + contactId });
                 apiCache.remove('contactList');
+                $timeout(logger.closeAlert, 5000);
                 return response.data;
             }
             function onFailure(response) {
