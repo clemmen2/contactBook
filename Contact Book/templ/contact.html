@@ -1,7 +1,7 @@
 ﻿<div class="row">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h1 class="panel-title">Edit Contact <span ng-if="vm.contact.last_name !== null || vm.contact.last_name !== ''">{{vm.contact.last_name}}, </span>{{vm.contact.first_name}} <small>Created: {{vm.contact.created_at}}, Updated: {{vm.contact.updated_at}}</small><button type="button" class="btn btn-primary btn-xs pull-right" ng-click="vm.home()">Home</button></h1>
+            <h1 class="panel-title">Edit Contact <span ng-if="vm.contact.last_name !== null && vm.contact.last_name !== ''">{{vm.contact.last_name}}, </span>{{vm.contact.first_name}} <small>Created: {{vm.contact.created_at}}, Updated: {{vm.contact.updated_at}}</small><button type="button" class="btn btn-primary btn-xs pull-right" ng-click="vm.home()">Home</button></h1>
         </div>
         <div class="panel-body">
             <div class="alert alert-danger" role="alert" ng-show="!createForm.$valid && createForm.$submitted">
