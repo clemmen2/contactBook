@@ -26,12 +26,12 @@
                         vm.contact[prop] = null;
                     }
                 }
-                api.addContact(vm.contact).then(onSuccess);
+                api.addContact(vm.contact).then(onSucc);
             } else {
                 logger.error({ from: 'contCtrl.js', message: 'Not a valid Form!' });
                 $timeout(logger.closeAlert, 5000);
             }
-            function onSuccess(response) {
+            function onSucc(response) {
                 originalContact = angular.merge({}, contactConst.CONTACTOBJ, vm.contact);
             }
         }
