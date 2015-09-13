@@ -34,6 +34,6 @@
             .otherwise({
                 redirectTo: '/404'
             });
-        $logProvider.debugEnabled(true);
+        $logProvider.debugEnabled(false);
     }
 })();
