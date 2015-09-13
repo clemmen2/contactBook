@@ -26,7 +26,7 @@
                         vm.contact[prop] = null;
                     }
                 }
-                api.addContact(vm.contact).then(onSucc);
+                api.updateContact(vm.contact).then(onSucc);
             } else {
                 logger.error({ from: 'contCtrl.js', message: 'Not a valid Form!' });
                 $timeout(logger.closeAlert, 5000);
