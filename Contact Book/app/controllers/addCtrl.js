@@ -1,8 +1,8 @@
 ﻿(function () {
     angular.module('cbApp')
         .controller('addCtrl', addCtrl);
-    addCtrl.$inject = ['$location','$scope','api','logger','regexpConst','contactConst'];
-    function addCtrl($location, $scope, api, logger, regexpConst, contactConst) {
+    addCtrl.$inject = ['$location','$scope','$timeout','api','logger','regexpConst','contactConst'];
+    function addCtrl($location, $scope, $timeout, api, logger, regexpConst, contactConst) {
         var vm = this;
         clearContact = contactConst.CONTACTOBJ; /*using HTML5 reset was creating bugs have to hard reset form*/
         vm.create = create;
@@ -18,7 +18,8 @@
                 }
                 api.addContact(vm.contact).then(onSuccess);
             } else {
-                logger.debug({ from: 'addCtrl.js', message: 'Not a valid Form' });
+                logger.error({ from: 'addCtrl.js', message: 'Not a valid Form' });
+                $timeout(logger.closeAlert, 5000);
             }
             function onSuccess(response) {
                 vm.clear();

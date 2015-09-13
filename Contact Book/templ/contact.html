@@ -1,90 +1,92 @@
 ﻿<div class="row">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h1 class="panel-title">Edit Contact <span ng-if="vm.contact.last_name !== null && vm.contact.last_name !== ''">{{vm.contact.last_name}}, </span>{{vm.contact.first_name}} <small>Created: {{vm.contact.created_at}}, Updated: {{vm.contact.updated_at}}</small><button type="button" class="btn btn-primary btn-xs pull-right" ng-click="vm.home()">Home</button></h1>
+            <h1 class="panel-title"><button type="button" class="btn btn-primary btn-xs pull-right homeBtn" ng-click="vm.home()">Home</button>Edit Contact <span ng-if="vm.contact.last_name !== null && vm.contact.last_name !== ''">{{vm.contact.last_name}}, </span>{{vm.contact.first_name}}<br /><small>Created: {{vm.contact.created_at}}, Updated: {{vm.contact.updated_at}}</small></h1>
         </div>
         <div class="panel-body">
-            <div class="alert alert-danger" role="alert" ng-show="!createForm.$valid && createForm.$submitted">
-                <div ng-messages="createForm.firstName.$error">
+            <div class="alert alert-danger" role="alert" ng-show="!editForm.$valid && editForm.$submitted">
+                <div ng-messages="editForm.firstName.$error">
                     <div ng-message="required">First Name required</div>
                     <div ng-message="pattern">Not a valid first name (all letters and ' are valid characters)</div>
                 </div>
-                <div ng-messages="createForm.lastName.$error">
+                <div ng-messages="editForm.lastName.$error">
                     <div ng-message="pattern">Not a valid last name (all letters and ' are valid characters)</div>
                 </div>
-                <div ng-messages="createForm.url.$error">
+                <div ng-messages="editForm.url.$error">
                     <div ng-message="pattern">Not a valid website url (HINT: must start with http:// or https://)</div>
                 </div>
-                <div ng-messages="createForm.address.$error">
+                <div ng-messages="editForm.address.$error">
                     <div ng-message="pattern">Not a valid address (make sure you have house number first)</div>
                 </div>
-                <div ng-messages="createForm.city.$error">
+                <div ng-messages="editForm.city.$error">
                     <div ng-message="pattern">Not a valid city name (all letters the ' and . are valid characters)</div>
                 </div>
-                <div ng-messages="createForm.state.$error">
+                <div ng-messages="editForm.state.$error">
                     <div ng-message="pattern">Not a valid state name (all letters the ' and . are valid characters)</div>
                 </div>
-                <div ng-messages="createForm.zip.$error">
+                <div ng-messages="editForm.zip.$error">
                     <div ng-message="pattern">Not a valid zip code (can be either 5 digits or 9 digits)</div>
                 </div>
-                <div ng-messages="createForm.email.$error">
+                <div ng-messages="editForm.email.$error">
                     <div ng-message="pattern">Not a valid email address (did you forget the @ symbol?)</div>
                 </div>
-                <div ng-messages="createForm.phone.$error">
+                <div ng-messages="editForm.phone.$error">
                     <div ng-message="pattern">Not a valid phone number (must be at least 10 digits and use x for extinsions)</div>
                 </div>
-                <div ng-messages="createForm.work.$error">
+                <div ng-messages="editForm.work.$error">
                     <div ng-message="pattern">Not a valid work phone number (must be at least 10 digits and use x for extinsions)</div>
                 </div>
             </div>
-            <form novalidate name='createForm' ng-submit="vm.update()">
-                <div class="form-group col-sm-6 col-md-4" ng-class="{ 'has-error': createForm.firstName.$touched && createForm.firstName.$invalid }">
+            <form novalidate name='editForm' ng-submit="vm.update()">
+                <div class="form-group col-sm-6 col-md-4" ng-class="{ 'has-error': editForm.firstName.$touched && editForm.firstName.$invalid }">
                     <label class="control-label">First Name</label>
                     <input type="text" class="form-control" placeholder="First Name" name='firstName' ng-model="vm.contact.first_name" ng-pattern="vm.regExp.NAME" required />
                 </div>
-                <div class="form-group col-sm-6 col-md-4" ng-class="{ 'has-error': createForm.lastName.$touched && createForm.lastName.$invalid }">
+                <div class="form-group col-sm-6 col-md-4" ng-class="{ 'has-error': editForm.lastName.$touched && editForm.lastName.$invalid }">
                     <label class="control-label">Last Name</label>
                     <input type="text" class="form-control" placeholder="Last Name" name='lastName' ng-model="vm.contact.last_name" ng-pattern="vm.regExp.NAME" />
                 </div>
-                <div class="form-group col-sm-12 col-md-4">
+                <div class="form-group col-sm-6 col-md-4">
                     <label class="control-label">Company</label>
                     <input type="text" class="form-control" placeholder="Company" name='company' ng-model="vm.contact.company_name" />
                 </div>
-                <div class="form-group col-sm-12 col-md-6" ng-class="{ 'has-error': createForm.url.$touched && createForm.url.$invalid }">
+                <div class="form-group col-sm-6 col-md-6" ng-class="{ 'has-error': editForm.url.$touched && editForm.url.$invalid }">
                     <label class="control-label">Website</label>
                     <input type="url" class="form-control" placeholder="Website" name='url' ng-model="vm.contact.url" ng-pattern="vm.regExp.URL" />
                 </div>
-                <div class="form-group col-md-6" ng-class="{ 'has-error': createForm.address.$touched && createForm.address.$invalid }">
+                <div class="form-group col-sm-12 col-md-6" ng-class="{ 'has-error': editForm.address.$touched && editForm.address.$invalid }">
                     <label class="control-label">Address</label>
                     <input type="text" class="form-control" placeholder="Address" name='address' ng-model="vm.contact.address" ng-pattern="vm.regExp.ADDRESS" />
                 </div>
-                <div class="form-group col-sm-4" ng-class="{ 'has-error': createForm.city.$touched && createForm.city.$invalid }">
+                <div class="form-group col-sm-4 col-md-4" ng-class="{ 'has-error': editForm.city.$touched && editForm.city.$invalid }">
                     <label class="control-label">City</label>
                     <input type="text" class="form-control" placeholder="City" name='city' ng-model="vm.contact.city" ng-pattern="vm.regExp.CITYSTATE" />
                 </div>
-                <div class="form-group col-sm-4" ng-class="{ 'has-error': createForm.state.$touched && createForm.state.$invalid }">
+                <div class="form-group col-sm-4 col-md-4" ng-class="{ 'has-error': editForm.state.$touched && editForm.state.$invalid }">
                     <label class="control-label">State</label>
                     <input type="text" class="form-control" placeholder="State" name='state' ng-model="vm.contact.state" ng-pattern="vm.regExp.CITYSTATE" />
                 </div>
-                <div class="form-group col-sm-4" ng-class="{ 'has-error': createForm.zip.$touched && createForm.zip.$invalid }">
+                <div class="form-group col-sm-4 col-md-4" ng-class="{ 'has-error': editForm.zip.$touched && editForm.zip.$invalid }">
                     <label class="control-label">Zip</label>
                     <input type="text" class="form-control" placeholder="Zip" name='zip' ng-model="vm.contact.zip" ng-pattern="vm.regExp.ZIP" />
                 </div>
-                <div class="form-group col-sm-6 col-md-4" ng-class="{ 'has-error': createForm.email.$touched && createForm.email.$invalid }">
+                <div class="form-group col-sm-6 col-md-4" ng-class="{ 'has-error': editForm.email.$touched && editForm.email.$invalid }">
                     <label class="control-label">Email</label>
                     <input type="email" class="form-control" placeholder="Email" name='email' ng-model="vm.contact.email" ng-pattern="vm.regExp.EMAIL" />
                 </div>
-                <div class="form-group col-sm-3 col-md-4" ng-class="{ 'has-error': createForm.phone.$touched && createForm.phone.$invalid }">
+                <div class="form-group col-sm-3 col-md-4" ng-class="{ 'has-error': editForm.phone.$touched && editForm.phone.$invalid }">
                     <label class="control-label">Phone</label>
                     <input type="tel" class="form-control" placeholder="Phone" name='phone' ng-model="vm.contact.phone" ng-pattern="vm.regExp.PHONE" />
                 </div>
-                <div class="form-group col-sm-3 col-md-4" ng-class="{ 'has-error': createForm.work.$touched && createForm.work.$invalid }">
+                <div class="form-group col-sm-3 col-md-4" ng-class="{ 'has-error': editForm.work.$touched && editForm.work.$invalid }">
                     <label class="control-label">Work Phone</label>
                     <input type="tel" class="form-control" placeholder="Work Phone" name='work' ng-model="vm.contact.work_phone" ng-pattern="vm.regExp.PHONE" />
                 </div>
-                <button type="submit" class="btn btn-success">Submit Changes</button>
-                <button type="button" ng-click="vm.reset()" class="btn btn-warning">Reset</button>
-                <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#ruSure">Delete Contact</button>
+                <div class="btns">
+                    <button type="submit" class="btn btn-success">Submit Changes</button>
+                    <button type="button" ng-click="vm.reset()" class="btn btn-warning">Reset</button>
+                    <button type="button" class="btn btn-danger deleteBtn pull-right" data-toggle="modal" data-target="#ruSure">Delete Contact</button>
+                </div>
             </form>
         </div>
     </div>

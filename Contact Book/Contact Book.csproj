@@ -88,6 +88,14 @@
     <Content Include="bower_components\angular-route\index.js" />
     <Content Include="bower_components\angular-route\package.json" />
     <Content Include="bower_components\angular-route\README.md" />
+    <Content Include="bower_components\angular-ui-scrollpoint\.gitignore" />
+    <Content Include="bower_components\angular-ui-scrollpoint\demo\index.html" />
+    <Content Include="bower_components\angular-ui-scrollpoint\dist\scrollpoint.js" />
+    <Content Include="bower_components\angular-ui-scrollpoint\dist\scrollpoint.min.js" />
+    <Content Include="bower_components\angular-ui-scrollpoint\gulpfile.js" />
+    <Content Include="bower_components\angular-ui-scrollpoint\karma.conf.js" />
+    <Content Include="bower_components\angular-ui-scrollpoint\src\scrollpoint.js" />
+    <Content Include="bower_components\angular-ui-scrollpoint\test\scrollpointSpec.js" />
     <Content Include="bower_components\angular\.bower.json" />
     <Content Include="bower_components\angular\angular-csp.css" />
     <Content Include="bower_components\angular\angular.js" />
@@ -317,6 +325,13 @@
     <Content Include="bower_components\angular-messages\bower.json" />
     <Content Include="bower_components\angular-messages\package.json" />
     <Content Include="bower_components\angular-messages\README.md" />
+    <Content Include="bower_components\angular-ui-scrollpoint\.bower.json" />
+    <Content Include="bower_components\angular-ui-scrollpoint\.jshintrc" />
+    <Content Include="bower_components\angular-ui-scrollpoint\.travis.yml" />
+    <Content Include="bower_components\angular-ui-scrollpoint\bower.json" />
+    <Content Include="bower_components\angular-ui-scrollpoint\LICENSE" />
+    <Content Include="bower_components\angular-ui-scrollpoint\package.json" />
+    <Content Include="bower_components\angular-ui-scrollpoint\README.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -326,6 +341,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\controllers\contCtrl.js" />
+    <Content Include="styles\cbStyle.css" />
     <Content Include="templ\add.html" />
     <Content Include="templ\404.html" />
     <Content Include="app\cbApp.config.js" />

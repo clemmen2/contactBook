@@ -1,8 +1,8 @@
 ﻿(function () {
     angular.module('cbApp')
         .controller('contCtrl', contCtrl);
-    contCtrl.$inject = ['$routeParams','$location','$scope','api','regexpConst','contactConst'];
-    function contCtrl($routeParams, $location, $scope, api, regexpConst,contactConst) {
+    contCtrl.$inject = ['$routeParams','$location','$scope','$timeout','api','regexpConst','contactConst','logger'];
+    function contCtrl($routeParams, $location, $scope, $timeout, api, regexpConst, contactConst, logger) {
         var vm = this;
         var originalContact = {};
         vm.contactId = $routeParams.contId;
@@ -20,7 +20,20 @@
             $location.path('/home');
         }
         function update() {
-            api.updateContact(vm.contact);
+            if ($scope.editForm.$valid) {
+                for (var prop in vm.contact) {
+                    if (vm.contact[prop] === '') {
+                        vm.contact[prop] = null;
+                    }
+                }
+                api.addContact(vm.contact).then(onSuccess);
+            } else {
+                logger.error({ from: 'contCtrl.js', message: 'Not a valid Form!' });
+                $timeout(logger.closeAlert, 5000);
+            }
+            function onSuccess(response) {
+                originalContact = angular.merge({}, contactConst.CONTACTOBJ, vm.contact);
+            }
         }
         function remove(contactId){
             api.deleteContact(contactId).then(onSucc);

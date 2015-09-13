@@ -1,4 +1,5 @@
 ﻿angular.module('cbApp', [
     'ngRoute',
-    'ngMessages'
+    'ngMessages',
+    'ui.scrollpoint'
 ]);

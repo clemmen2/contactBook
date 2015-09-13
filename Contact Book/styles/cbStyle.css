@@ -1,0 +1,39 @@
+﻿.alertContainer{
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+}
+.searchForm{
+    margin-bottom:15px;
+}
+@media screen and (max-width: 767px) {
+    .deleteBtn {
+        float: none !important;
+    }
+    .btns > button{
+        margin-bottom: 15px;
+    }
+}
+@media screen and (min-width: 768px) {
+    .alertContainer{
+        width: 750px;
+    }
+}
+@media screen and (min-width: 992px) {
+    .searchForm.ui-scrollpoint {
+        position: fixed;
+        width: 293px;
+    }
+    .alertContainer{
+        width: 970px;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .searchForm.ui-scrollpoint {
+        position: fixed;
+        width: 360px;
+    }
+    .alertContainer{
+        width: 1170px;
+    }
+}
