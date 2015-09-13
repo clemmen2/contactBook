@@ -10,14 +10,41 @@ module.exports = function (grunt) {
         },
         copy:{
             html: {
-                expand: true,
-                src: 'index.html',
-                dest: 'dist/'
+                files: [
+                    { expand: true, src: 'index.html', dest: 'dist/' },
+                    { expand: true, src: 'index.html', dest: 'src/' }
+                ]
             },
             templ: {
-                expand: true,
-                src: 'templ/*.html',
-                dest: 'dist/'
+                files: [
+                    { expand: true, src: 'templ/*.html', dest: 'dist/' },
+                    { expand: true, src: 'templ/*.html', dest: 'src/' }
+                ]
+            },
+            app: { expand: true, src: 'app/**', dest: 'src/' },
+            styles: { expand: true, src: 'styles/*.css', dest: 'src/' },
+            bower: {
+                files: [
+                    { expand: true, src: 'bower_components/bootstrap/dist/css/bootstrap.min.css', dest: 'src/' },
+                    { expand: true, src: 'bower_components/bootstrap/dist/css/bootstrap-theme.min.css', dest: 'src/' },
+                    { expand: true, src: 'bower_components/jquery/dist/jquery.min.js', dest: 'src/' },
+                    { expand: true, src: 'bower_components/bootstrap/dist/js/bootstrap.min.js', dest: 'src/' },
+                    { expand: true, src: 'bower_components/angular/angular.min.js', dest: 'src/' },
+                    { expand: true, src: 'bower_components/angular-route/angular-route.min.js', dest: 'src/' },
+                    { expand: true, src: 'bower_components/angular-messages/angular-messages.min.js', dest: 'src/' },
+                    { expand: true, src: 'bower_components/angular-ui-scrollpoint/dist/scrollpoint.min.js', dest: 'src/' }
+                ]
+            }
+        },
+        compress: {
+            main: {
+                options: {
+                    archive:'acsChallenge_William_Dixon.zip'
+                },
+                files: [
+                    { expand: true, src: 'src/**', dest: '.' },
+                    { expand: true, src: 'dist/**', dest: '.' }
+                ]
             }
         },
         useminPrepare: {
@@ -39,7 +66,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-usemin');
     grunt.registerTask('default', ['jshint:src']);
-    grunt.registerTask('build', ['copy', 'jshint:src', 'useminPrepare', 'concat:generated', 'uglify:generated', 'cssmin:generated', 'usemin']);
+    grunt.registerTask('build', ['copy', 'jshint:src', 'useminPrepare', 'concat:generated', 'uglify:generated', 'cssmin:generated', 'usemin', 'compress']);
 };
