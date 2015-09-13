@@ -14,13 +14,13 @@
         api.getContact(vm.contactId).then(onSuccess);
         function onSuccess(response) {
             vm.contact = response;
-            originalContact = angular.merge({}, contactConst.CONTACTOBJ, vm.contact);
+            originalContact = angular.merge({}, contactConst.CONTACTOBJ, vm.contact);       /*Unifies contact to what is present in API database.*/
         }
         function home() {
             $location.path('/home');
         }
         function update() {
-            if ($scope.editForm.$valid) {
+            if ($scope.editForm.$valid) {           /*Unifies all contacts. If user puts a value and erases it reads '' not null.*/
                 for (var prop in vm.contact) {
                     if (vm.contact[prop] === '') {
                         vm.contact[prop] = null;
@@ -28,7 +28,7 @@
                 }
                 api.updateContact(vm.contact).then(onSucc);
             } else {
-                logger.error({ from: 'contCtrl.js', message: 'Not a valid Form!' });
+                logger.error({ from: 'contCtrl.js', message: 'Not a valid Form!' });        /*On smartphones, if user is scrolled at bottom they will not know there is an error if I didn't include this.*/
                 $timeout(logger.closeAlert, 5000);
             }
             function onSucc(response) {

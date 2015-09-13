@@ -1,4 +1,5 @@
-﻿(function () {
+﻿/*Trying to unify the look of all phone numbers in view even if database formats are different*/
+(function () {
     'use strict';
     angular.module('cbApp')
         .filter('phoneFilt', phoneFilt);

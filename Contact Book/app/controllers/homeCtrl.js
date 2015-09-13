@@ -4,7 +4,6 @@
     homeCtrl.$inject = ['api','$location'];
     function homeCtrl(api, $location) {
         var vm = this;
-        vm.error = [];
         vm.edit = edit;
         vm.add = add;
         vm.filterLast = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');

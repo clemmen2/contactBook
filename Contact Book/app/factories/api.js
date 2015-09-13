@@ -4,7 +4,7 @@
         .factory('api', api);
     api.$inject = ['$http','logger','$q','$cacheFactory','$timeout','authConst'];
     function api($http, logger, $q, $cacheFactory, $timeout, authConst) {
-        var apiCache = $cacheFactory('apiCache');
+        var apiCache = $cacheFactory('apiCache');       /*Lower API requests with cache*/
         var service = {
             addContact: addContact,
             getList: getList,
@@ -26,7 +26,7 @@
             function onSuccess(response) {
                 logger.success({ from: 'api.js', message: 'Successfully added ' + response.data.new_contact.first_name });
                 logger.debug({ from: 'api.js', message: 'with id ' + response.data.new_contact.id });
-                apiCache.remove('contactList');
+                apiCache.remove('contactList');     /*Forces update on cache with API next time we need the contactList*/
                 $timeout(logger.closeAlert, 5000);
                 return response.data;
             }
@@ -49,7 +49,7 @@
             logger.info({ from: 'api.js', message: 'Loading Contacts. Please Wait...' });
             if (data) {
                 logger.debug({ from: 'api.js', message: 'Using Cached Data for Contact List' });
-                logger.closeAlert();
+                logger.closeAlert();        /*Closes loading alert*/
                 return $q.resolve(data);
             } else
                 return $http(tmpReq).then(onSuccess, onFailure);

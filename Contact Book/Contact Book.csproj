@@ -73,7 +73,6 @@
     <Content Include="app\controllers\addCtrl.js" />
     <Content Include="app\controllers\alertCtrl.js" />
     <Content Include="app\controllers\nfCtrl.js" />
-    <Content Include="app\factories\formVal.js" />
     <Content Include="app\factories\logger.js" />
     <Content Include="app\filters\firstFilt.js" />
     <Content Include="app\filters\phoneFilt.js" />
