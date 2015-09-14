@@ -12,10 +12,13 @@
                 </select>
             </div>
             <button type="button" class="btn btn-success" ng-click="vm.add()">Create New Contact</button>
+        <div>
+            <dir-pagination-controls></dir-pagination-controls>
+        </div>
     </form>
 </div>
 <div class="col-md-8">
-    <div class="panel panel-default" ng-repeat="contact in vm.contacts | filter:search | firstFilt:searchLast">
+    <div class="panel panel-default" dir-paginate="contact in vm.contacts | filter:search | firstFilt:searchLast | itemsPerPage: 10">
         <div class="panel-heading">
             <h3 class="panel-title"><span ng-if="contact.last_name !== null">{{contact.last_name}}, </span>{{contact.first_name}}<button type="button" class="btn btn-primary btn-xs pull-right" ng-click="vm.edit(contact.id)">Edit</button></h3>
         </div>

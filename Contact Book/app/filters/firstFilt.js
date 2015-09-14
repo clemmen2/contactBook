@@ -9,7 +9,7 @@
                 return contacts;
             } else {
                 return contacts.filter(function (contact) {
-                    return contact.last_name.startsWith(letter);
+                    return contact.last_name.toUpperCase().startsWith(letter);
                 });
             }
         }

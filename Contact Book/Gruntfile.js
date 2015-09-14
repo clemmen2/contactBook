@@ -33,6 +33,8 @@ module.exports = function (grunt) {
                     { expand: true, src: 'bower_components/angular-route/angular-route.min.js', dest: 'src/' },
                     { expand: true, src: 'bower_components/angular-messages/angular-messages.min.js', dest: 'src/' },
                     { expand: true, src: 'bower_components/angular-ui-scrollpoint/dist/scrollpoint.min.js', dest: 'src/' },
+                    { expand: true, src: 'bower_components/angularUtils-pagination/dirPagination.js', dest: 'src/' },
+                    { expand: true, src: 'bower_components/angularUtils-pagination/dirPagination.tpl.html', dest: 'src/' },
                     { expand: true, src: 'bower_components/bootstrap/dist/css/bootstrap.min.css', dest: 'dist/' },
                     { expand: true, src: 'bower_components/bootstrap/dist/css/bootstrap-theme.min.css', dest: 'dist/' },
                     { expand: true, src: 'bower_components/jquery/dist/jquery.min.js', dest: 'dist/' },
@@ -40,7 +42,10 @@ module.exports = function (grunt) {
                     { expand: true, src: 'bower_components/angular/angular.min.js', dest: 'dist/' },
                     { expand: true, src: 'bower_components/angular-route/angular-route.min.js', dest: 'dist/' },
                     { expand: true, src: 'bower_components/angular-messages/angular-messages.min.js', dest: 'dist/' },
-                    { expand: true, src: 'bower_components/angular-ui-scrollpoint/dist/scrollpoint.min.js', dest: 'dist/' }
+                    { expand: true, src: 'bower_components/angular-ui-scrollpoint/dist/scrollpoint.min.js', dest: 'dist/' },
+                    { expand: true, src: 'bower_components/angularUtils-pagination/dirPagination.js', dest: 'dist/' },
+                    { expand: true, src: 'bower_components/angularUtils-pagination/dirPagination.tpl.html', dest: 'dist/' }
+
                 ]
             }
         },

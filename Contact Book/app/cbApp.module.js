@@ -1,5 +1,6 @@
 ﻿angular.module('cbApp', [
     'ngRoute',
     'ngMessages',
-    'ui.scrollpoint'
+    'ui.scrollpoint',
+    'angularUtils.directives.dirPagination'
 ]);

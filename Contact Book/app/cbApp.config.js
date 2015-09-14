@@ -2,8 +2,8 @@
     'use strict';
     angular.module('cbApp')
         .config(config);
-    config.$inject = ['$routeProvider','$logProvider'];
-    function config($routeProvider, $logProvider) {
+    config.$inject = ['$routeProvider','$logProvider','paginationTemplateProvider'];
+    function config($routeProvider, $logProvider, paginationTemplateProvider) {
         $routeProvider
             .when('/home', {
                 templateUrl: 'templ/home.html',
@@ -35,5 +35,6 @@
                 redirectTo: '/404'
             });
         $logProvider.debugEnabled(false);
+        paginationTemplateProvider.setPath('bower_components/angularUtils-pagination/dirPagination.tpl.html');
     }
 })();

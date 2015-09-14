@@ -117,6 +117,10 @@
     <Content Include="bower_components\angular-ui-scrollpoint\karma.conf.js" />
     <Content Include="bower_components\angular-ui-scrollpoint\src\scrollpoint.js" />
     <Content Include="bower_components\angular-ui-scrollpoint\test\scrollpointSpec.js" />
+    <Content Include="bower_components\angularUtils-pagination\dirPagination.js" />
+    <Content Include="bower_components\angularUtils-pagination\dirPagination.tpl.html" />
+    <Content Include="bower_components\angularUtils-pagination\index.js" />
+    <Content Include="bower_components\angularUtils-pagination\package.js" />
     <Content Include="bower_components\angular\.bower.json" />
     <Content Include="bower_components\angular\angular-csp.css" />
     <Content Include="bower_components\angular\angular.js" />
@@ -363,6 +367,10 @@
     <Content Include="bower_components\angular-ui-scrollpoint\LICENSE" />
     <Content Include="bower_components\angular-ui-scrollpoint\package.json" />
     <Content Include="bower_components\angular-ui-scrollpoint\README.md" />
+    <Content Include="bower_components\angularUtils-pagination\.bower.json" />
+    <Content Include="bower_components\angularUtils-pagination\bower.json" />
+    <Content Include="bower_components\angularUtils-pagination\package.json" />
+    <Content Include="bower_components\angularUtils-pagination\README.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
