@@ -1,8 +1,8 @@
 ﻿(function () {
     angular.module('cbApp')
         .controller('addCtrl', addCtrl);
-    addCtrl.$inject = ['$location','$scope','$timeout','api','logger','regexpConst','contactConst'];
-    function addCtrl($location, $scope, $timeout, api, logger, regexpConst, contactConst) {
+    addCtrl.$inject = ['$location','$scope','$timeout','$window','api','logger','regexpConst','contactConst'];
+    function addCtrl($location, $scope, $timeout, $window, api, logger, regexpConst, contactConst) {
         var vm = this;
         init();
         function init() {
