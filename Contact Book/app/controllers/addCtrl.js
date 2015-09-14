@@ -21,8 +21,10 @@
                 }
                 api.addContact(vm.contact).then(onSuccess);
             } else {
-                logger.error({ from: 'addCtrl.js', message: 'Not a valid Form' });  /*On smartphones, if user is scrolled at bottom they will not know there is an error if I didn't include this.*/
-                $timeout(logger.closeAlert, 5000);
+                if ($window.innerWidth < 768) {
+                    logger.error({ from: 'addCtrl.js', message: 'Not a valid Form' });  /*On smartphones, if user is scrolled at bottom they will not know there is an error if I didn't include this.*/
+                    $timeout(logger.closeAlert, 5000);
+                }
             }
             function onSuccess(response) {
                 vm.clear();

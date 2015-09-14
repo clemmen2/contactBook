@@ -1,8 +1,8 @@
 ﻿(function () {
     angular.module('cbApp')
         .controller('contCtrl', contCtrl);
-    contCtrl.$inject = ['$routeParams','$location','$scope','$timeout','api','regexpConst','contactConst','logger'];
-    function contCtrl($routeParams, $location, $scope, $timeout, api, regexpConst, contactConst, logger) {
+    contCtrl.$inject = ['$routeParams','$location','$scope','$timeout','$window','api','regexpConst','contactConst','logger'];
+    function contCtrl($routeParams, $location, $scope, $timeout, $window, api, regexpConst, contactConst, logger) {
         var vm = this;
         var originalContact = {};
         vm.contactId = $routeParams.contId;
@@ -31,8 +31,10 @@
                 }
                 api.updateContact(vm.contact).then(onSucc);
             } else {
-                logger.error({ from: 'contCtrl.js', message: 'Not a valid Form!' });        /*On smartphones, if user is scrolled at bottom they will not know there is an error if I didn't include this.*/
-                $timeout(logger.closeAlert, 5000);
+                if ($window.innerWidth < 768) {
+                    logger.error({ from: 'contCtrl.js', message: 'Not a valid Form!' });        /*On smartphones, if user is scrolled at bottom they will not know there is an error if I didn't include this.*/
+                    $timeout(logger.closeAlert, 5000);
+                }
             }
             function onSucc(response) {
                 originalContact = angular.merge({}, contactConst.CONTACTOBJ, vm.contact);
@@ -47,10 +49,10 @@
         function reset() {
             vm.contact = angular.copy(originalContact);
             resetFixed();
-            $scope.createForm.$setPristine();
-            $scope.createForm.$setUntouched();
-            $scope.createForm.$setValidity();
-            $scope.createForm.$submitted = false;
+            $scope.editForm.$setPristine();
+            $scope.editForm.$setUntouched();
+            $scope.editForm.$setValidity();
+            $scope.editForm.$submitted = false;
         }
         function contChange(newContact) {
             var count = 0;
