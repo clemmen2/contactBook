@@ -13,7 +13,7 @@
         vm.regExp = regexpConst;
         api.getContact(vm.contactId).then(onSuccess);
         resetFixed();
-        $scope.$watchCollection('vm.contact',contChange);
+        $scope.$watchCollection('vm.contact', contChange);      /*Stops Angulars live update and only removes errors if fixed. If invalid again will not show until next submit*/
         function onSuccess(response) {
             vm.contact = response;
             originalContact = angular.merge({}, contactConst.CONTACTOBJ, vm.contact);       /*Unifies contact to what is present in API database.*/

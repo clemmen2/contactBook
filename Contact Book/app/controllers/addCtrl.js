@@ -10,7 +10,7 @@
         vm.home = home;
         vm.regExp = regexpConst;
         resetFixed();
-        $scope.$watchCollection('vm.contact', contChange);
+        $scope.$watchCollection('vm.contact', contChange);      /*Stops Angulars live update and only removes errors if fixed. If invalid again will not show until next submit*/
         function create() {
             resetFixed();
             if ($scope.addForm.$valid) {            /*Unifies all contacts. If user puts a value and erases it reads '' not null.*/
