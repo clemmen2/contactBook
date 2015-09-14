@@ -6,35 +6,35 @@
         <div class="panel-body">
             <div class="alert alert-danger" role="alert" ng-show="!addForm.$valid && addForm.$submitted && !vm.fixedForm">
                 <div  ng-messages="addForm.firstName.$error" ng-show="!vm.fixed.firstName">
-                    <div ng-message="required">First Name required</div>
-                    <div ng-message="pattern">Not a valid first name (all letters and ' are valid characters)</div>
+                    <div ng-message="required">-First Name required</div>
+                    <div ng-message="pattern">-Not a valid first name (all letters and ' are valid characters)</div>
                 </div>
                 <div ng-messages="addForm.lastName.$error" ng-show="!vm.fixed.lastName">
-                    <div ng-message="pattern">Not a valid last name (all letters and ' are valid characters)</div>
+                    <div ng-message="pattern">-Not a valid last name (all letters and ' are valid characters)</div>
                 </div>
                 <div ng-messages="addForm.url.$error" ng-show="!vm.fixed.url">
-                    <div ng-message="pattern">Not a valid website url (HINT: must start with http:// or https://)</div>
+                    <div ng-message="pattern">-Not a valid website url (HINT: must start with http:// or https://)</div>
                 </div>
                 <div ng-messages="addForm.address.$error" ng-show="!vm.fixed.address">
-                    <div ng-message="pattern">Not a valid address (make sure you have house number first)</div>
+                    <div ng-message="pattern">-Not a valid address (make sure you have house number first)</div>
                 </div>
                 <div ng-messages="addForm.city.$error" ng-show="!vm.fixed.city">
-                    <div ng-message="pattern">Not a valid city name (all letters the ' and . are valid characters)</div>
+                    <div ng-message="pattern">-Not a valid city name (all letters the ' and . are valid characters)</div>
                 </div>
                 <div ng-messages="addForm.state.$error" ng-show="!vm.fixed.state">
-                    <div ng-message="pattern">Not a valid state name (all letters the ' and . are valid characters)</div>
+                    <div ng-message="pattern">-Not a valid state name (all letters the ' and . are valid characters)</div>
                 </div>
                 <div ng-messages="addForm.zip.$error" ng-show="!vm.fixed.zip">
-                    <div ng-message="pattern">Not a valid zip code (can be either 5 digits or 9 digits)</div>
+                    <div ng-message="pattern">-Not a valid zip code (can be either 5 digits or 9 digits)</div>
                 </div>
                 <div ng-messages="addForm.email.$error" ng-show="!vm.fixed.email">
-                    <div ng-message="pattern">Not a valid email address (did you forget the @ symbol?)</div>
+                    <div ng-message="pattern">-Not a valid email address (did you forget the @ symbol?)</div>
                 </div>
                 <div ng-messages="addForm.phone.$error" ng-show="!vm.fixed.phone">
-                    <div ng-message="pattern">Not a valid phone number (must be at least 10 digits and use x for extinsions)</div>
+                    <div ng-message="pattern">-Not a valid phone number (must be at least 10 digits and use x for extinsions)</div>
                 </div>
                 <div ng-messages="addForm.work.$error" ng-show="!vm.fixed.work">
-                    <div ng-message="pattern">Not a valid work phone number (must be at least 10 digits and use x for extinsions)</div>
+                    <div ng-message="pattern">-Not a valid work phone number (must be at least 10 digits and use x for extinsions)</div>
                 </div>
             </div>
             <form novalidate name='addForm' ng-submit="vm.create()">
