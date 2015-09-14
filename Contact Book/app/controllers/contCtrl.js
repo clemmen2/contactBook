@@ -33,7 +33,6 @@
                     }
                 }
                 api.updateContact(vm.contact).then(onSucc);
-                init();     /*Mainly to get updated_at updated and displayed*/
             } else {
                 if ($window.innerWidth < 768) {
                     logger.error({ from: 'contCtrl.js', message: 'Not a valid Form!' });        /*On samller screens, if user is scrolled at bottom they will not know there is an error if I didn't include this.*/
@@ -42,6 +41,7 @@
             }
             function onSucc(response) {
                 originalContact = angular.merge({}, contactConst.CONTACTOBJ, vm.contact);
+                vm.contact.updated_at = $filter('date')(new Date, 'yyyy-MM-dd HH:mm:ss', '+0000');   /*Updates view updated time (assuming server updates to UTC:+0 time) it will be off because of communication time.*/
             }
         }
         function remove(contactId){
