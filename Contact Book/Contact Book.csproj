@@ -407,6 +407,7 @@
     <Resource Include="templ\home.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <None Include="README.md" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

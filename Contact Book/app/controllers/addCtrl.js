@@ -4,13 +4,16 @@
     addCtrl.$inject = ['$location','$scope','$timeout','api','logger','regexpConst','contactConst'];
     function addCtrl($location, $scope, $timeout, api, logger, regexpConst, contactConst) {
         var vm = this;
-        clearContact = contactConst.CONTACTOBJ;     /*using HTML5 reset was creating bugs have to hard reset form*/
-        vm.create = create;
-        vm.clear = clear;
-        vm.home = home;
-        vm.regExp = regexpConst;
-        resetFixed();
-        $scope.$watchCollection('vm.contact', contChange);      /*Stops Angulars live update and only removes errors if fixed. If invalid again will not show until next submit*/
+        init();
+        function init() {
+            vm.create = create;
+            vm.clear = clear;
+            vm.home = home;
+            vm.regExp = regexpConst;
+            clearContact = contactConst.CONTACTOBJ;     /*using HTML5 reset was creating bugs have to hard reset form*/
+            resetFixed();
+            $scope.$watchCollection('vm.contact', contChange);      /*Stops Angulars live update and only removes errors if fixed. If invalid again will not show until next submit*/
+        }
         function create() {
             resetFixed();
             if ($scope.addForm.$valid) {            /*Unifies all contacts. If user puts a value and erases it reads '' not null.*/
@@ -63,7 +66,7 @@
             if ($scope.addForm.work.$valid)
                 vm.fixed.work = true;
             for (var prop in vm.fixed) {
-                if (vm.fixed[prop] == true)
+                if (vm.fixed[prop] === true)
                     count += 1;
             }
             if (count == 10)
@@ -81,7 +84,7 @@
                 email: false,
                 phone: false,
                 work: false
-            }
+            };
             vm.fixedForm = false;
         }
     }

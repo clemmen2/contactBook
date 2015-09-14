@@ -8,7 +8,7 @@ module.exports = function (grunt) {
                 }
             }
         },
-        copy:{
+        copy: {
             html: {
                 files: [
                     { expand: true, src: 'index.html', dest: 'dist/' },
@@ -32,7 +32,15 @@ module.exports = function (grunt) {
                     { expand: true, src: 'bower_components/angular/angular.min.js', dest: 'src/' },
                     { expand: true, src: 'bower_components/angular-route/angular-route.min.js', dest: 'src/' },
                     { expand: true, src: 'bower_components/angular-messages/angular-messages.min.js', dest: 'src/' },
-                    { expand: true, src: 'bower_components/angular-ui-scrollpoint/dist/scrollpoint.min.js', dest: 'src/' }
+                    { expand: true, src: 'bower_components/angular-ui-scrollpoint/dist/scrollpoint.min.js', dest: 'src/' },
+                    { expand: true, src: 'bower_components/bootstrap/dist/css/bootstrap.min.css', dest: 'dist/' },
+                    { expand: true, src: 'bower_components/bootstrap/dist/css/bootstrap-theme.min.css', dest: 'dist/' },
+                    { expand: true, src: 'bower_components/jquery/dist/jquery.min.js', dest: 'dist/' },
+                    { expand: true, src: 'bower_components/bootstrap/dist/js/bootstrap.min.js', dest: 'dist/' },
+                    { expand: true, src: 'bower_components/angular/angular.min.js', dest: 'dist/' },
+                    { expand: true, src: 'bower_components/angular-route/angular-route.min.js', dest: 'dist/' },
+                    { expand: true, src: 'bower_components/angular-messages/angular-messages.min.js', dest: 'dist/' },
+                    { expand: true, src: 'bower_components/angular-ui-scrollpoint/dist/scrollpoint.min.js', dest: 'dist/' }
                 ]
             }
         },
@@ -43,7 +51,8 @@ module.exports = function (grunt) {
                 },
                 files: [
                     { expand: true, src: 'src/**', dest: '.' },
-                    { expand: true, src: 'dist/**', dest: '.' }
+                    { expand: true, src: 'dist/**', dest: '.' },
+                    { expand: true, src: 'README.md', dest: '.' }
                 ]
             }
         },
@@ -71,5 +80,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-usemin');
     grunt.registerTask('default', ['jshint:src']);
-    grunt.registerTask('build', ['copy', 'jshint:src', 'useminPrepare', 'concat:generated', 'uglify:generated', 'cssmin:generated', 'usemin', 'compress']);
+    grunt.registerTask('build', ['copy', 'jshint:src', 'useminPrepare', 'concat:generated', 'uglify:generated', 'cssmin:generated', 'usemin', 'compress','clean']);
 };

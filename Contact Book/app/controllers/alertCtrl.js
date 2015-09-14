@@ -4,10 +4,13 @@
     alertCtrl.$inject = ['$scope'];
     function alertCtrl($scope) {
         var vm = this;
-        vm.close = close;
-        vm.showAlert = false;
-        $scope.$on('alert', show);
-        $scope.$on('alertOff', close);
+        init();
+        function init() {
+            vm.close = close;
+            vm.showAlert = false;
+            $scope.$on('alert', show);
+            $scope.$on('alertOff', close);
+        }
         function close() {
             vm.showAlert = false;
         }

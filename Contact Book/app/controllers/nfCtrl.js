@@ -4,9 +4,12 @@
     nfCtrl.$inject = ['$location'];
     function nfCtrl($location) {
         var vm = this;
-        vm.home = home;
-        function home() {
-            $location.path('/home');
+        init();
+        function init() {
+            vm.home = home;
+            function home() {
+                $location.path('/home');
+            }
         }
     }
 })();

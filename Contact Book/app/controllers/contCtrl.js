@@ -1,22 +1,25 @@
 ﻿(function () {
     angular.module('cbApp')
         .controller('contCtrl', contCtrl);
-    contCtrl.$inject = ['$routeParams','$location','$scope','$timeout','$window','api','regexpConst','contactConst','logger'];
-    function contCtrl($routeParams, $location, $scope, $timeout, $window, api, regexpConst, contactConst, logger) {
+    contCtrl.$inject = ['$routeParams','$location','$scope','$timeout','$window','$filter','api','regexpConst','contactConst','logger'];
+    function contCtrl($routeParams, $location, $scope, $timeout, $window, $filter, api, regexpConst, contactConst, logger) {
         var vm = this;
         var originalContact = {};
-        vm.contactId = $routeParams.contId;
-        vm.home = home;
-        vm.update = update;
-        vm.remove = remove;
-        vm.reset = reset;
-        vm.regExp = regexpConst;
-        api.getContact(vm.contactId).then(onSuccess);
-        resetFixed();
-        $scope.$watchCollection('vm.contact', contChange);      /*Stops Angulars live update and only removes errors if fixed. If invalid again will not show until next submit*/
-        function onSuccess(response) {
-            vm.contact = response;
-            originalContact = angular.merge({}, contactConst.CONTACTOBJ, vm.contact);       /*Unifies contact to what is present in API database.*/
+        init();
+        function init() {
+            vm.contactId = $routeParams.contId;
+            vm.home = home;
+            vm.update = update;
+            vm.remove = remove;
+            vm.reset = reset;
+            vm.regExp = regexpConst;
+            api.getContact(vm.contactId).then(onSuccess);
+            resetFixed();
+            $scope.$watchCollection('vm.contact', contChange);      /*Stops Angulars live update and only removes errors if fixed. If invalid again will not show until next submit*/
+            function onSuccess(response) {
+                vm.contact = response;
+                originalContact = angular.merge({}, contactConst.CONTACTOBJ, vm.contact);       /*Unifies contact to what is present in API database.*/
+            }
         }
         function home() {
             $location.path('/home');
@@ -30,9 +33,10 @@
                     }
                 }
                 api.updateContact(vm.contact).then(onSucc);
+                init();     /*Mainly to get updated_at updated and displayed*/
             } else {
                 if ($window.innerWidth < 768) {
-                    logger.error({ from: 'contCtrl.js', message: 'Not a valid Form!' });        /*On smartphones, if user is scrolled at bottom they will not know there is an error if I didn't include this.*/
+                    logger.error({ from: 'contCtrl.js', message: 'Not a valid Form!' });        /*On samller screens, if user is scrolled at bottom they will not know there is an error if I didn't include this.*/
                     $timeout(logger.closeAlert, 5000);
                 }
             }
@@ -77,7 +81,7 @@
             if ($scope.editForm.work.$valid)
                 vm.fixed.work = true;
             for (var prop in vm.fixed) {
-                if (vm.fixed[prop] == true)
+                if (vm.fixed[prop] === true)
                     count += 1;
             }
             if (count == 10)
@@ -90,12 +94,12 @@
                 url: false,
                 address: false,
                 city: false,
-                state:false,
+                state: false,
                 zip: false,
                 email: false,
                 phone: false,
                 work: false
-            }
+            };
             vm.fixedForm = false;
         }
     }

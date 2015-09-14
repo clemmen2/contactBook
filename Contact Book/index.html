@@ -11,6 +11,41 @@
     <!-- build:css styles/cbStyle.css-->
     <link rel="stylesheet" href="styles/cbStyle.css" />
     <!-- endbuild -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        if (typeof jQuery === 'undefined') {
+            document.write('<script src="bower_components/jquery/dist/jquery.min.js">\x3C/script>');
+        }
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script>
+        if (typeof $().emulateTransitionEnd === 'undefined') {
+            document.write('<script src="bower_components/bootstrap/dist/js/bootstrap.min.js">\x3C/script>');
+        }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script>
+        if (typeof angular === 'undefined') {
+            document.write('<script src="bower_components/angular/angular.min.js">\x3C/script>');
+        }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.min.js"></script>
+    <script>
+        try {
+            angular.module('ngRoute');
+        }catch(e){
+            document.write('<script src="bower_components/angular-route/angular-route.min.js">\x3C/script>');
+        }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-messages.min.js"></script>
+    <script>
+        try {
+            angular.module('ngMessages');
+        }catch(e){
+            document.write('<script src="bower_components/angular-messages/angular-messages.min.js">\x3C/script>');
+        }
+    </script>
+    <script src="bower_components/angular-ui-scrollpoint/dist/scrollpoint.min.js"></script>
 </head>
 <body ng-app="cbApp">
     <div class="container">
@@ -26,14 +61,6 @@
             <ng-view></ng-view>
         </div>
     </div>
-    <!-- build:js js/frameworks.js -->
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-route/angular-route.min.js"></script>
-    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
-    <script src="bower_components/angular-ui-scrollpoint/dist/scrollpoint.min.js"></script>
-    <!-- endbuild -->
 
     <!-- build:js js/cbApp.js -->
     <script src="app/cbApp.module.js"></script>
