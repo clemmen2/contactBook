@@ -6,6 +6,9 @@
 .searchForm{
     margin-bottom:15px;
 }
+.mainSection{
+    margin-top: 50px;
+}
 @media screen and (max-width: 767px) {
     .deleteBtn {
         float: none !important;

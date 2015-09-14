@@ -4,36 +4,36 @@
             <h1 class="panel-title"><button type="button" class="btn btn-primary btn-xs pull-right homeBtn" ng-click="vm.home()">Home</button>Edit Contact <span ng-if="vm.contact.last_name !== null && vm.contact.last_name !== ''">{{vm.contact.last_name}}, </span>{{vm.contact.first_name}}<br /><small>Created: {{vm.contact.created_at}}, Updated: {{vm.contact.updated_at}}</small></h1>
         </div>
         <div class="panel-body">
-            <div class="alert alert-danger" role="alert" ng-show="!editForm.$valid && editForm.$submitted">
-                <div ng-messages="editForm.firstName.$error">
+            <div class="alert alert-danger" role="alert" ng-show="!editForm.$valid && editForm.$submitted && vm.fixedForm == false">
+                <div ng-messages="editForm.firstName.$error" ng-show="vm.fixed.firstName == false">
                     <div ng-message="required">First Name required</div>
                     <div ng-message="pattern">Not a valid first name (all letters and ' are valid characters)</div>
                 </div>
-                <div ng-messages="editForm.lastName.$error">
+                <div ng-messages="editForm.lastName.$error" ng-show="vm.fixed.lastName == false">
                     <div ng-message="pattern">Not a valid last name (all letters and ' are valid characters)</div>
                 </div>
-                <div ng-messages="editForm.url.$error">
+                <div ng-messages="editForm.url.$error" ng-show="vm.fixed.url == false">
                     <div ng-message="pattern">Not a valid website url (HINT: must start with http:// or https://)</div>
                 </div>
-                <div ng-messages="editForm.address.$error">
+                <div ng-messages="editForm.address.$error" ng-show="vm.fixed.address == false">
                     <div ng-message="pattern">Not a valid address (make sure you have house number first)</div>
                 </div>
-                <div ng-messages="editForm.city.$error">
+                <div ng-messages="editForm.city.$error" ng-show="vm.fixed.city == false">
                     <div ng-message="pattern">Not a valid city name (all letters the ' and . are valid characters)</div>
                 </div>
-                <div ng-messages="editForm.state.$error">
+                <div ng-messages="editForm.state.$error" ng-show="vm.fixed.sate == false">
                     <div ng-message="pattern">Not a valid state name (all letters the ' and . are valid characters)</div>
                 </div>
-                <div ng-messages="editForm.zip.$error">
+                <div ng-messages="editForm.zip.$error" ng-show="vm.fixed.zip == false">
                     <div ng-message="pattern">Not a valid zip code (can be either 5 digits or 9 digits)</div>
                 </div>
-                <div ng-messages="editForm.email.$error">
+                <div ng-messages="editForm.email.$error" ng-show="vm.fixed.email == false">
                     <div ng-message="pattern">Not a valid email address (did you forget the @ symbol?)</div>
                 </div>
-                <div ng-messages="editForm.phone.$error">
+                <div ng-messages="editForm.phone.$error" ng-show="vm.fixed.phone == false">
                     <div ng-message="pattern">Not a valid phone number (must be at least 10 digits and use x for extinsions)</div>
                 </div>
-                <div ng-messages="editForm.work.$error">
+                <div ng-messages="editForm.work.$error" ng-show="vm.fixed.work == false">
                     <div ng-message="pattern">Not a valid work phone number (must be at least 10 digits and use x for extinsions)</div>
                 </div>
             </div>

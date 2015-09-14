@@ -25,7 +25,7 @@
                 <dd ng-if="contact.company_name !== null">{{contact.company_name}}</dd>
                 <dt ng-if="contact.address !== null || contact.city !== null || contact.state !== null || contact.zip !== null">Address:</dt>
                 <dd ng-if="contact.address !== null">{{contact.address}}</dd>
-                <dd ng-if="contact.city !== null || contact.state !== null || contact.zip !== null"><span ng-if="contact.city !== null">{{contact.city}}, </span>{{contact.state}} {{contact.zip}}</dd>
+                <dd ng-if="contact.city !== null || contact.state !== null || contact.zip !== null"><span ng-if="contact.city !== null">{{contact.city}}<span ng-if="contact.city !== null && contact.state !== null">,</span> </span>{{contact.state}} {{contact.zip}}</dd>
                 <dt ng-if="contact.email !== null">Email:</dt>
                 <dd ng-if="contact.email !== null"><a href="mailto:{{contact.email}}">{{contact.email}}</a></dd>
                 <dt ng-if="contact.phone !== null">Phone:</dt>
