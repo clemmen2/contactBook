@@ -68,20 +68,40 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\constants\contactConst.js" />
-    <Content Include="app\constants\regexpConst.js" />
-    <Content Include="app\controllers\addCtrl.js" />
-    <Content Include="app\controllers\alertCtrl.js" />
-    <Content Include="app\controllers\nfCtrl.js" />
-    <Content Include="app\factories\logger.js" />
-    <Content Include="app\filters\firstFilt.js" />
-    <Content Include="app\filters\phoneFilt.js" />
+    <Resource Include="app\constants\contactConst.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="app\constants\regexpConst.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="app\controllers\addCtrl.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="app\controllers\alertCtrl.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="app\controllers\nfCtrl.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="app\factories\logger.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="app\filters\firstFilt.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="app\filters\phoneFilt.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Content Include="bower_components\angular-messages\angular-messages.js" />
-    <Content Include="bower_components\angular-messages\angular-messages.min.js" />
+    <Resource Include="bower_components\angular-messages\angular-messages.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Content Include="bower_components\angular-messages\index.js" />
     <Content Include="bower_components\angular-route\.bower.json" />
     <Content Include="bower_components\angular-route\angular-route.js" />
-    <Content Include="bower_components\angular-route\angular-route.min.js" />
+    <Resource Include="bower_components\angular-route\angular-route.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Content Include="bower_components\angular-route\angular-route.min.js.map" />
     <Content Include="bower_components\angular-route\bower.json" />
     <Content Include="bower_components\angular-route\index.js" />
@@ -90,7 +110,9 @@
     <Content Include="bower_components\angular-ui-scrollpoint\.gitignore" />
     <Content Include="bower_components\angular-ui-scrollpoint\demo\index.html" />
     <Content Include="bower_components\angular-ui-scrollpoint\dist\scrollpoint.js" />
-    <Content Include="bower_components\angular-ui-scrollpoint\dist\scrollpoint.min.js" />
+    <Resource Include="bower_components\angular-ui-scrollpoint\dist\scrollpoint.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Content Include="bower_components\angular-ui-scrollpoint\gulpfile.js" />
     <Content Include="bower_components\angular-ui-scrollpoint\karma.conf.js" />
     <Content Include="bower_components\angular-ui-scrollpoint\src\scrollpoint.js" />
@@ -98,7 +120,9 @@
     <Content Include="bower_components\angular\.bower.json" />
     <Content Include="bower_components\angular\angular-csp.css" />
     <Content Include="bower_components\angular\angular.js" />
-    <Content Include="bower_components\angular\angular.min.js" />
+    <Resource Include="bower_components\angular\angular.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Content Include="bower_components\angular\angular.min.js.gzip" />
     <Content Include="bower_components\angular\angular.min.js.map" />
     <Content Include="bower_components\angular\bower.json" />
@@ -109,17 +133,23 @@
     <Content Include="bower_components\bootstrap\bower.json" />
     <Content Include="bower_components\bootstrap\dist\css\bootstrap-theme.css" />
     <Content Include="bower_components\bootstrap\dist\css\bootstrap-theme.css.map" />
-    <Content Include="bower_components\bootstrap\dist\css\bootstrap-theme.min.css" />
+    <Resource Include="bower_components\bootstrap\dist\css\bootstrap-theme.min.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Content Include="bower_components\bootstrap\dist\css\bootstrap.css" />
     <Content Include="bower_components\bootstrap\dist\css\bootstrap.css.map" />
-    <Content Include="bower_components\bootstrap\dist\css\bootstrap.min.css" />
+    <Resource Include="bower_components\bootstrap\dist\css\bootstrap.min.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Content Include="bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="bower_components\bootstrap\dist\js\bootstrap.js" />
-    <Content Include="bower_components\bootstrap\dist\js\bootstrap.min.js" />
+    <Resource Include="bower_components\bootstrap\dist\js\bootstrap.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Content Include="bower_components\bootstrap\dist\js\npm.js" />
     <Content Include="bower_components\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="bower_components\bootstrap\fonts\glyphicons-halflings-regular.svg" />
@@ -228,7 +258,9 @@
     <Content Include="bower_components\jquery\.bower.json" />
     <Content Include="bower_components\jquery\bower.json" />
     <Content Include="bower_components\jquery\dist\jquery.js" />
-    <Content Include="bower_components\jquery\dist\jquery.min.js" />
+    <Resource Include="bower_components\jquery\dist\jquery.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Content Include="bower_components\jquery\dist\jquery.min.map" />
     <Content Include="bower_components\jquery\MIT-LICENSE.txt" />
     <Content Include="bower_components\jquery\src\ajax.js" />
@@ -339,18 +371,42 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\controllers\contCtrl.js" />
-    <Content Include="styles\cbStyle.css" />
-    <Content Include="templ\add.html" />
-    <Content Include="templ\404.html" />
-    <Content Include="app\cbApp.config.js" />
-    <Content Include="app\cbApp.module.js" />
-    <Content Include="app\constants\authConst.js" />
-    <Content Include="app\controllers\homeCtrl.js" />
-    <Content Include="app\factories\api.js" />
-    <Content Include="index.html" />
-    <Content Include="templ\contact.html" />
-    <Content Include="templ\home.html" />
+    <Resource Include="app\controllers\contCtrl.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="styles\cbStyle.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="templ\add.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="templ\404.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="app\cbApp.config.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="app\cbApp.module.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="app\constants\authConst.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="app\controllers\homeCtrl.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="app\factories\api.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Page Include="index.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Resource Include="templ\contact.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="templ\home.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

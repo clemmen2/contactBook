@@ -49,7 +49,7 @@
             logger.info({ from: 'api.js', message: 'Loading Contacts. Please Wait...' });
             if (data) {
                 logger.debug({ from: 'api.js', message: 'Using Cached Data for Contact List' });
-                logger.closeAlert();        /*Closes loading alert*/
+                logger.closeAlert();
                 return $q.resolve(data);
             } else
                 return $http(tmpReq).then(onSuccess, onFailure);

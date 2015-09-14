@@ -57,7 +57,9 @@ module.exports = function (grunt) {
             html: 'dist/index.html'
         },
         clean: {
-            dist: ['dist']
+            dist: ['dist/'],
+            src: ['src/'],
+            bin:['bin/']
         }
     });
     grunt.loadNpmTasks('grunt-contrib-copy');
