@@ -41,7 +41,7 @@
             }
             function onSucc(response) {
                 originalContact = angular.merge({}, contactConst.CONTACTOBJ, vm.contact);
-                vm.contact.updated_at = $filter('date')(new Date, 'yyyy-MM-dd HH:mm:ss', '+0000');   /*Updates view updated time (assuming server updates to UTC:+0 time) it will be off because of communication time.*/
+                vm.contact.updated_at = $filter('date')(new Date(), 'yyyy-MM-dd HH:mm:ss', '+0000');   /*Updates view updated time (assuming server updates to UTC:+0 time) it will be off because of communication time.*/
             }
         }
         function remove(contactId){
